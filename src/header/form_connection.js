@@ -1,5 +1,5 @@
 
-
+//FIXME: finir les formulaires de connexion/inscription
 function Form_connection(type){
 	console.log("1");
 	if (type !== "signin_form" || type !== "signup_form"){	

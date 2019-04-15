@@ -17,6 +17,7 @@ HEADER
 
 	width: 100%;
 	height: 20vh;
+	margin: 0;
 }
 
 .signup {
@@ -39,4 +40,12 @@ FORM CONNECTION
 }
 input { 
     text-align: center; 
+}
+
+.signup_form{
+	text-align: center;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: inline-block;
 }
