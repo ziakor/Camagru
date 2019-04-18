@@ -28,7 +28,7 @@ HEADER
 FORM CONNECTION
 */
 
-.signin_form{
+#signin_form{
 	text-align: center;
 	width: 100%;
 	margin-left: auto;
@@ -42,7 +42,7 @@ input {
     text-align: center; 
 }
 
-.signup_form{
+#signup_form{
 	text-align: center;
 	width: 100%;
 	margin-left: auto;

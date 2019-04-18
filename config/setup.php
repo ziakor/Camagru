@@ -11,11 +11,13 @@ try
 } catch(PDOException $err){
 	echo $err->getMessage() . "\ndatabase camagru_db creation failed!\n";
 }
+$con = null;
 try{
 	$req = "CREATE TABLE IF NOT EXISTS user(
 		`id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 		`pseudo` VARCHAR(255) NOT NULL,
-		`passwd` VARCHAR(255)  NOT NULL
+		`passwd` VARCHAR(255)  NOT NULL,
+		`email` VARCHAR(255) NOT NULL
 	)";
 	$con = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
 	$con->exec($req);
@@ -24,4 +26,5 @@ try{
 {
 	echo $err->getMessage() . "\ntable user creation failed!\n";
 }
+$con = null;
 ?>
