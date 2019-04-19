@@ -1,5 +1,7 @@
 <?php
 	session_start();
+
+	require_once "./config/setup.php";
 ?>
 <!doctype html>
 <html lang="fr">
@@ -12,7 +14,16 @@
 
 	<link rel="stylesheet" href="./header.css">
 <body>
-	<?php include("./src/header/header.php") ?>
-	<script src="./src/header/form_connection.js"></script>
+	<?php
+	if (array_key_exists('state', $_GET))
+	{
+		
+		unset($_SESSION['loggued_as']);
+		session_destroy();
+		Header('Location: '.$_SERVER['PHP_SELF']);
+		Exit();
+	}
+	include("./src/header/header.php") ?>
+	<script src="./src/header/log.js"></script>
 </body>
 </html>

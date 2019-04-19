@@ -7,6 +7,10 @@ body
 	padding: 0;
 }
 
+.no-pad
+{
+	padding: 0 !important;
+}
 /*
 HEADER
 */
@@ -20,14 +24,17 @@ HEADER
 	margin: 0;
 }
 
-.signup {
+.signup  {
 	margin-left: 3px;
 }
+.signout {
+	margin-left: 4px;
+}
+
 
 /*
 FORM CONNECTION
 */
-
 #signin_form{
 	text-align: center;
 	width: 100%;
