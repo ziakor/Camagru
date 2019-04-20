@@ -13,10 +13,10 @@ function Form_connection(type){
 		if (type === "signin_form"){
 			var text ="<div class=\"form-group\">"
 			+ "<label for=\"InputEmail1\">Email address</label>"
-			+ "<input type=\"email\" class=\"form-control rz\" id=\"InputEmail1\" name=\"InputEmail\" aria-describedby=\"emailHelp\" placeholder=\"Enter email\"></div>"
+			+ "<input type=\"email\" class=\"form-control rz\" id=\"InputEmail1\" name=\"InputEmail\" autocomplete=\"username email\" aria-describedby=\"emailHelp\" placeholder=\"Enter email\"></div>"
 			+ "<div class=\"form-group\">"
 			+ "<label for=\"InputPassword1\">Password</label>"
-			+ "<input type=\"password\" class=\"form-control rz\" id=\"InputPassword1\" name=\"InputPassword\" placeholder=\"Password\">"
+			+ "<input type=\"password\" class=\"form-control rz\" id=\"InputPassword1\" autocomplete=\"current-password\" name=\"InputPassword\" placeholder=\"Password\">"
 			+ "</div>"
 			+ "<input class=\"btn btn-primary\" type=\"submit\" name=\"login_sub\" value=\"identifiez-vous\">"
 		}
@@ -24,15 +24,15 @@ function Form_connection(type){
 		{
 			var text="<div class=\"form-group\">"
 			+ "<label for=\"InputPseudo\">Pseudo:</label>"
-			+ "<input type=\"text\" class=\"form-control\" placeholder=\"5 caracteres alphanumeriques\" id=\"InputPseudo\" name=\"InputPseudo\" pattern=\"[a-zA-z0-9]{5,}\">"
+			+ "<input type=\"username\" class=\"form-control\" placeholder=\"5 caracteres alphanumeriques\" id=\"InputPseudo\" name=\"InputPseudo\" pattern=\"[a-zA-z0-9]{5,}\">"
 			+ "</div>"
 			+ "<div class=\"form-group\">"
 			+ "<label for=\"InputPassword\">Password:</label>"
-			+ "<input type=\"password\" class=\"form-control\" id=\"InputPassword1\" name=\"InputPassword1\" placeholder=\"7 caracteres alphanumeriques\" pattern=\"[a-zA-z0-9]{6,}\" required=\"required\">"
+			+ "<input type=\"password\" class=\"form-control\" id=\"InputPassword1\" name=\"InputPassword1\" autocomplete=\"new-password\" placeholder=\"7 caracteres alphanumeriques\" pattern=\"[a-zA-z0-9]{6,}\" required=\"required\">"
 			+ "</div>"
 			+ "<div class=\"form-group\">"
 			+ "<label for=\"InputPassword\">Password Confirmation</label>"
-			+ "<input type=\"password\" class=\"form-control\" id=\"InputPassword2\" placeholder=\"Password Confirmation\" name=\"InputPassword2\" pattern=\"[a-zA-z0-9]{6,}\" required=\"required\">"
+			+ "<input type=\"password\" class=\"form-control\" id=\"InputPassword2\" autocomplete=\"new-password\" placeholder=\"Password Confirmation\" name=\"InputPassword2\" pattern=\"[a-zA-z0-9]{6,}\" required=\"required\">"
 			+ "</div>"
 			+ "<div class=\"form-group\">"
 			+ "<label for=\"InputEmail\">Email address</label>"
@@ -46,4 +46,9 @@ function Form_connection(type){
 		}
 		newelem.innerHTML = text;
 		parent.after(newelem);
+}
+
+function	ConfirmationForm(key, pseudo)
+{
+	console.log("bite")
 }

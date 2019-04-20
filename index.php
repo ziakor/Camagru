@@ -17,13 +17,18 @@
 	<?php
 	if (array_key_exists('state', $_GET))
 	{
-		
 		unset($_SESSION['loggued_as']);
 		session_destroy();
 		Header('Location: '.$_SERVER['PHP_SELF']);
 		Exit();
 	}
-	include("./src/header/header.php") ?>
+	include("./src/header/header.php");
+	if(array_key_exists('valid', $_GET) && array_key_exists('pseudo', $_GET))
+	{
+		header("Location: http://" . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['PHP_SELF']), '/\\') . $uri . "/src/header/log.php?valid=" . $_GET['valid'] . "&pseudo=" . $_GET['pseudo']);
+		exit;
+	}
+	?>
 	<script src="./src/header/log.js"></script>
 </body>
 </html>
