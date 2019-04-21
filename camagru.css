@@ -23,10 +23,16 @@ HEADER
 	height: 20vh;
 	margin: 0;
 }
+nav
+{
+	background-color: rgb(5, 49, 69)!important
+}
 
 .signup  {
 	margin-left: 3px;
 }
+.
+
 .signout {
 	margin-left: 4px;
 }
@@ -49,10 +55,45 @@ input {
     text-align: center; 
 }
 
+.main
+{
+	background-color:  gray;
+}
+
 #signup_form{
 	text-align: center;
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	display: inline-block;
+}
+
+/*
+** MAIN
+*/
+
+.main
+{
+	background-color: rgba(2, 40, 58, 0.87);
+
+}
+
+/*
+**ITEM
+*/
+#item
+{
+	margin: 0;
+	padding: 0;
+}
+.item_content
+{
+	border: none;
+}
+#item img
+{
+	background-color: rgba(1,1,1,0);
+	border: none;
+	border-right: 1px solid grey;
+	border-bottom: 1px solid grey;
 }
