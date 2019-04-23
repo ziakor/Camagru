@@ -1,5 +1,5 @@
 <header class="container-fluid no-pad">
-	<nav class="navbar navbar-expand navbar-dark " id ="navbarheader">
+	<nav class="navbar navbar-expand " id ="navbarheader">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -19,11 +19,11 @@
 			<?php
 				if (!array_key_exists('loggued_as', $_SESSION))
 				{
-					echo "<button class=\"btn btn-outline-success my-2 my-sm-0 signin\" onclick=\"Form_connection('signin_form')\">Sign-in</button>";
-					echo "<button class=\"btn btn-outline-success my-2 my-sm-0 signup\" onclick=\"Form_connection('signup_form')\">Sign-up</button>";
+					echo "<button class=\"btn my-2 my-sm-0 signin\" onclick=\"Form_connection('signin_form')\">Sign-in</button>";
+					echo "<button class=\"btn my-2 my-sm-0 signup\" onclick=\"Form_connection('signup_form')\">Sign-up</button>";
 				}
 				else
-				{	echo "Bonjour " . $_SESSION['loggued_as'] . "<button class=\"btn btn-outline-success my-2 my-sm-0 signout\" onClick=\"document.location.href='./index.php?state=logout'\" />Sign-out</button>";
+				{	echo "Bonjour " . $_SESSION['loggued_as'] . "<button class=\"btn log btn-outline-success my-2 my-sm-0 signout\" onClick=\"document.location.href='./index.php?state=logout'\" />Sign-out</button>";
 				}
 			?>
 		</div>

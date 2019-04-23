@@ -19,7 +19,6 @@
 			<div id="sup1" class="item_content img-fluid">
 			<img src="./ressources/insert/msteffen-removebg.png" class="img-fluid " alt="Responsive image">
 			</div>
-\
 		</div>
 		<div class="col-6" id="montage_view">
 			drthhtftcgc

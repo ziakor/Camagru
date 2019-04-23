@@ -1,19 +1,39 @@
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
 /*
 BODY
 */
 body
 {
+	background-color: #27282e;
+	color: #e8e5e0 !important;
 	margin: 0;
 	padding: 0;
+	font-size: 1rem;
+	font-weight: 400;
 }
 
 .no-pad
 {
 	padding: 0 !important;
+	/* position: fixed; */
+	z-index: 9;
 }
 /*
 HEADER
 */
+
 .header
 {
 
@@ -25,22 +45,43 @@ HEADER
 }
 nav
 {
-	background-color: rgb(5, 49, 69)!important
+	color: rgba(232, 229, 234, 0.9);
+	background-color: rgba(0, 0, 0, 0.377);
 }
 
+.nav-link
+{
+	color: rgba(232, 229, 234, 0.9);
+	
+}
+.signin {
+	margin-left: 4px;
+	color: rgba(232, 229, 234, 0.85);
+	border-color: rgba(232, 229, 234, 0.6);
+}
+nav button:hover
+{
+	color: rgba(232, 229, 234, 0.9) !important;
+	background-color: rgb(89,92,96) !important;
+}
 .signup  {
-	margin-left: 3px;
+	margin-left: 4px;
+	color: rgba(232, 229, 234, 0.85);
+	border-color: rgba(232, 229, 234, 0.6);
 }
 
 
 .signout {
 	margin-left: 4px;
+	color: rgba(232, 229, 234, 0.85);
+	border-color: rgba(232, 229, 234, 0.6);
 }
 
 
 /*
 FORM CONNECTION
 */
+
 #signin_form{
 	text-align: center;
 	width: 100%;
@@ -55,10 +96,6 @@ input {
     text-align: center; 
 }
 
-.main
-{
-	background-color:  gray;
-}
 
 #signup_form{
 	text-align: center;
@@ -71,11 +108,11 @@ input {
 /*
 ** MAIN
 */
-
 .main
 {
-	background-color: rgba(41,45,56, 0.95);
-
+	margin: 0;
+	padding: 0;
+	z-index: 1;
 }
 
 /*
@@ -83,17 +120,45 @@ input {
 */
 #item
 {
-	margin: 0;
-	padding: 0;
+	padding-right: 0px;
+	max-height: 100vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding-left: 0px;
 }
 .item_content
 {
-	border: none;
+	margin: 2px;
+	margin-right: 2px;
 }
 #item img
 {
-	background-color: rgba(1,1,1,0);
-	border: none;
-	border-right: 1px solid grey;
-	border-bottom: 1px solid grey;
+	background-color: rgba(0, 0, 0, 0.178);
+	border-radius: 3px 3px 0 0;
 }
+
+
+/*
+**Montage_view
+*/
+#montage_view
+{
+	margin: 2px;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+	background-color: rgba(0, 0, 0, 0.178);
+	border-radius: 3px 3px 0 0;
+}
+
+/*
+**Resultat
+*/
+
+#res
+{
+	margin-left: 2px;
+	max-width: 33%;
+	background-color: rgba(0, 0, 0, 0.178);
+}
+
