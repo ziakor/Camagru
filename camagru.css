@@ -92,8 +92,8 @@ FORM CONNECTION
 .form-control{
 	background-color:transparent;
 }
-input { 
-    text-align: center; 
+input {
+    text-align: center;
 }
 
 
@@ -113,6 +113,7 @@ input {
 	margin: 0;
 	padding: 0;
 	z-index: 1;
+	height: 80%;
 }
 
 /*
@@ -122,6 +123,7 @@ input {
 {
 	padding-right: 0px;
 	max-height: 100vh;
+	margin-bottom: 2px;
 	overflow-y: scroll;
 	overflow-x: hidden;
 	padding-left: 0px;
@@ -136,29 +138,60 @@ input {
 	background-color: rgba(0, 0, 0, 0.178);
 	border-radius: 3px 3px 0 0;
 }
-
-
+#sup8
+{
+	width: 100%;
+	height: auto;
+}
 /*
 **Montage_view
 */
+
+video {
+	width: 90%    !important;
+	height: auto   !important;
+	display:block;
+	margin: 0 auto;
+
+	background-color: rgba(0, 0, 0, 0.178);
+	border-radius: 3px 3px 0 0;
+   }
+
+#capture
+{
+
+}
+
 #montage_view
 {
 	margin: 2px;
 	margin-left: 0;
-	margin-right: 0;
+
 	padding: 0;
 	background-color: rgba(0, 0, 0, 0.178);
 	border-radius: 3px 3px 0 0;
 }
 
+
 /*
 **Resultat
 */
 
-#res
+#output
 {
-	margin-left: 2px;
-	max-width: 33%;
+	margin-top: 2px;
+	padding: 0;
+	margin-bottom: 2px;
+	max-width: 32.5%;
 	background-color: rgba(0, 0, 0, 0.178);
+	max-height: 100vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+#output img
+{
+	display:block;
+	margin: 2px auto;
+	width: 90%;
 }
 

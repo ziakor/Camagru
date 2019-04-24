@@ -7,10 +7,10 @@
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 			<li class="nav-item">
-				<a class="nav-link" href="#">HOME</a>
+				<a class="nav-link" href="./index.php">HOME</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">GALLERIE</a>
+				<a class="nav-link" href="./src/main/gallerie.php">GALLERIE</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
