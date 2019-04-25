@@ -59,8 +59,8 @@ function	active_sup(id)
 	parent.style.backgroundColor = 'rgba(' + ['0','0','0','0.01'].join(',') + ')';
 }
 	else{
-		console.log(parent.querySelector('img'));
-		parent.querySelector('img').className += ' order-' + t;
+		//console.log(parent.querySelector('img'));
+		parent.querySelector('img').className = "item_content img-fluid" + ' order-' + t;
 		t++;
 		parent.style.backgroundColor = 'green';
 		//parent.style.opacity = '0.5';
@@ -89,14 +89,20 @@ function getElementsByIdStartsWith(container, selectorTag, prefix) {
 	}
 function sortMe(a, b) {
  
-		return a.className.match(/[order-]\d*/)[1] - b.className.match(/[order-]\d*/)[1];
+
+		var q = a.className.match(/[order-]+\d+/)[0].replace("order-","");
+		q = Number(q);
+		var w = b.className.match(/[order-]+\d+/)[0].replace("order-","");
+		w = Number(w);
+		console.log( q + " : " + w);
+		return q - w;
 	 }
 
 function capture_image()
 {
 	var video = document.getElementById('video');
 	output = document.getElementById('output');
-	console.log(getElementsByIdStartsWith("item", "div", "sup"));
+	//console.log(getElementsByIdStartsWith("item", "div", "sup"));
 	var scale = 0.50;
 
 	var canvas = document.createElement("canvas");
@@ -108,7 +114,7 @@ function capture_image()
 
 	var lst = getElementsByIdStartsWith("item", "div", "sup");
 	var k = 0;
-	arraylst = []
+	arraylst = [];
 	for (let index = 0; index < lst.length; index++) {
 		if (lst[index].style.backgroundColor == 'green')
 			arraylst[index] = lst[index].querySelector('img');
@@ -116,9 +122,9 @@ function capture_image()
 	arraylst.sort(sortMe);
 	console.log("ARRAY: " + arraylst);
 	for (let index = 0; index < arraylst.length; index++) {
-		console.log(arraylst[index]);
-		//canvas.getContext('2d').drawImage(lst[index].querySelector('img'),
-		//0, 0, canvas.width, canvas.height);
+		console.log( " >>" +arraylst[index]);
+		canvas.getContext('2d').drawImage(arraylst[index],
+		0, 0, canvas.width, canvas.height);
 	}
 
 
