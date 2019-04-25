@@ -147,6 +147,18 @@ input {
 **Montage_view
 */
 
+#choice
+{
+	margin: 0 50%;
+
+	border-radius: 3px 3px 0 0;
+}
+
+#image_c
+{
+	margin: 50% 50%;
+}
+
 video {
 	width: 90%    !important;
 	height: auto   !important;
@@ -157,10 +169,7 @@ video {
 	border-radius: 3px 3px 0 0;
    }
 
-#capture
-{
 
-}
 
 #montage_view
 {

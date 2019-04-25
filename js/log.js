@@ -1,5 +1,7 @@
 
-//FIXME: finir les formulaires de connexion/inscription
+
+//HEADER
+
 function Form_connection(type){
 		var parent = document.getElementById("navbarheader");
 		if ((test = document.getElementById('signin_form')) != null)
@@ -48,6 +50,8 @@ function Form_connection(type){
 		parent.after(newelem);
 }
 
+
+//MAIN
 var t = 0;
 function	active_sup(id)
 {
@@ -56,7 +60,8 @@ function	active_sup(id)
 	{
 	//parent.style.opacity = '1';
 	parent.querySelector('img').className = "item_content img-fluid";
-	parent.style.backgroundColor = 'rgba(' + ['0','0','0','0.01'].join(',') + ')';
+	//parent.style.backgroundColor = 'rgba(' + ['0','0','0','0.01'].join(',') + ')';
+	parent.style.backgroundColor = 'black';
 }
 	else{
 		//console.log(parent.querySelector('img'));
@@ -67,9 +72,27 @@ function	active_sup(id)
 	}
 }
 
+
 const constraints = {
 	video: true
 	};
+
+function choice(id)
+{
+	if (id === "webcam")
+	{
+		console.log("coucou")
+		document.getElementById('image_c').style.display = "none";
+		document.getElementById('webcam').querySelector('button').style.display="block";
+		document.getElementById('webcam').querySelector('video').style.display="block";
+	}
+	else
+	{
+		document.getElementById('image_c').style.display = "block";
+		document.getElementById('webcam').querySelector('video').style.display="none";
+		document.getElementById('webcam').querySelector('button').style.display="none";
+	}
+}
 
 const video = document.querySelector('video');
 
@@ -115,14 +138,19 @@ function capture_image()
 	var lst = getElementsByIdStartsWith("item", "div", "sup");
 	var k = 0;
 	arraylst = [];
+	let cc = 0;
 	for (let index = 0; index < lst.length; index++) {
-		if (lst[index].style.backgroundColor == 'green')
-			arraylst[index] = lst[index].querySelector('img');
-	}
+		console.log(index + " : " + lst[index].style.backgroundColor);
+		if (lst[index].style.backgroundColor === 'green')
+		{
+			arraylst[cc] = lst[index].querySelector('img');
+			cc++;
+		}
+}
 	arraylst.sort(sortMe);
-	console.log("ARRAY: " + arraylst);
+	//console.log("ARRAY: " + arraylst);
 	for (let index = 0; index < arraylst.length; index++) {
-		console.log( " >>" +arraylst[index]);
+		//console.log( " >>" +arraylst[index]);
 		canvas.getContext('2d').drawImage(arraylst[index],
 		0, 0, canvas.width, canvas.height);
 	}
