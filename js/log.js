@@ -153,12 +153,11 @@ function sortMe(a, b) {
 		return q - w;
 	 }
 
-	 function convertImageToCanvas(image) {
+	 function convertImageToCanvas(image, scale) {
 		var canvas = document.createElement("canvas");
-		canvas.width = image.width;
-		canvas.height = image.height;
-		canvas.getContext("2d").drawImage(image, 0, 0);
-	
+		canvas.width = video.videoWidth * scale;
+		canvas.height = video.videoHeight * scale;
+		canvas.getContext('2d').drawImage(image,0, 0, canvas.width, canvas.height);
 		return canvas;
 	}
 
@@ -167,20 +166,12 @@ function capture_image()
 	output = document.getElementById('output');
 		//console.log(getElementsByIdStartsWith("item", "div", "sup"));
 	var scale = 0.50;
+	var canvas = document.createElement("canvas");
 
 	if (document.getElementById('video').style.display == "block")
-	{
-		var canvas = document.createElement("canvas");
-		var video = document.getElementById('video');
-		//console.log(video);
-		canvas.width = video.videoWidth * scale;
-		canvas.height = video.videoHeight * scale;
-		canvas.getContext('2d').drawImage(video,0, 0, canvas.width, canvas.height);
-	}
+		var canvas = convertImageToCanvas(document.getElementById('video'), scale);
 	else
-	{
-		var canvas = convertImageToCanvas(document.getElementById('back_image'));
-	}
+		var canvas = convertImageToCanvas(document.getElementById('back_image'), scale);
 	console.log(video);
 
 
@@ -188,7 +179,6 @@ function capture_image()
 
 	var lst = getElementsByIdStartsWith("item", "div", "sup");
 	console.log(canvas);
-	document.getElementById('webcam').append(canvas);
 
 
 	var k = 0;
