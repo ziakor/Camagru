@@ -25,6 +25,9 @@
 			<div id="sup8" class="item_content img-fluid">
 			<img src="./ressources/insert/maroland-removebg.png" onclick="active_sup('sup8')" class="img-fluid " alt="Responsive image">
 			</div>
+			<div id="sup9" class="item_content img-fluid">
+			<img src="./ressources/insert/vlaroque-removebg.png" onclick="active_sup('sup9')" class="img-fluid " alt="Responsive image">
+			</div>
 
 		</div>
 		<div class="col-6" id="montage_view" >
@@ -38,17 +41,16 @@
 					<label class="custom-control-label" for="customRadioInline2">Webcam</label>
 				</div>
 			</div>
-			<div id="image_c">
-				<input type="file" name="file_back" id="file_back">
-			</div>
 			<div class="d-flex flex-column justify-content-center" id="webcam">
+				<div id="image_c">
+				</div>
 				<video autoplay id="video" style="display:none"></video>
-				<button class="btn my-2 my-sm-0 signin" id="capture" style="display:none" onclick="capture_image()">Capture</button>
+				<input type="file" name="file_back" id="file_back">
+				<button class="btn my-2 my-sm-0 signin" id="capture" onclick="capture_image()">Capture</button>
 			</div>
 		</div>
 		<div class="col-4 d-flex flex-column" id ="output">
 
-			</div>
 
 		</div>
 	</div>

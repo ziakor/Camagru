@@ -156,9 +156,24 @@ input {
 
 #image_c
 {
-	margin: 50% 50%;
+	width: 100%    !important;
+	height: auto   !important;
+	display:none;
+	margin: 0 auto;
+
+	border-radius: 3px 3px 0 0;
 }
 
+#image_c img
+{
+	flex: 0 0 50%;
+	padding: 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	max-width: 50%;;
+
+}
 video {
 	width: 90%    !important;
 	height: auto   !important;

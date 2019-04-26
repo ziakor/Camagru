@@ -83,16 +83,48 @@ function choice(id)
 	{
 		console.log("coucou")
 		document.getElementById('image_c').style.display = "none";
-		document.getElementById('webcam').querySelector('button').style.display="block";
 		document.getElementById('webcam').querySelector('video').style.display="block";
 	}
 	else
 	{
 		document.getElementById('image_c').style.display = "block";
 		document.getElementById('webcam').querySelector('video').style.display="none";
-		document.getElementById('webcam').querySelector('button').style.display="none";
 	}
 }
+
+
+//utilisation d'une image
+
+window.onload = function() {
+
+	var fileInput = document.getElementById('file_back');
+	var fileDisplayArea = document.getElementById('image_c');
+
+
+	fileInput.addEventListener('change', function(e) {
+		var file = fileInput.files[0];
+		var imageType = /image.*/;
+
+		if (file.type.match(imageType)) {
+			var reader = new FileReader();
+			fileDisplayArea.style.display = "block";
+			reader.onload = function(e) {
+				//fileDisplayArea.innerHTML = "";
+
+				var img = new Image();
+				img.src = reader.result;
+				img.setAttribute('id','back_image')
+				fileDisplayArea.append(img)
+			}
+
+			reader.readAsDataURL(file);
+		} else {
+			fileDisplayArea.innerHTML = "File not supported!"
+		}
+	});
+
+}
+//utilisation de la webcam
 
 const video = document.querySelector('video');
 
@@ -121,26 +153,49 @@ function sortMe(a, b) {
 		return q - w;
 	 }
 
+	 function convertImageToCanvas(image) {
+		var canvas = document.createElement("canvas");
+		canvas.width = image.width;
+		canvas.height = image.height;
+		canvas.getContext("2d").drawImage(image, 0, 0);
+	
+		return canvas;
+	}
+
 function capture_image()
 {
-	var video = document.getElementById('video');
 	output = document.getElementById('output');
-	//console.log(getElementsByIdStartsWith("item", "div", "sup"));
+		//console.log(getElementsByIdStartsWith("item", "div", "sup"));
 	var scale = 0.50;
 
-	var canvas = document.createElement("canvas");
-	canvas.width = video.videoWidth * scale;
-	canvas.height = video.videoHeight * scale;
-	canvas.getContext('2d').drawImage(video,0, 0, canvas.width, canvas.height);
-	//canvas.getContext('2d').drawImage(document.getElementById('sup3').querySelector('img'),0, 0, canvas.width, canvas.height);
+	if (document.getElementById('video').style.display == "block")
+	{
+		var canvas = document.createElement("canvas");
+		var video = document.getElementById('video');
+		//console.log(video);
+		canvas.width = video.videoWidth * scale;
+		canvas.height = video.videoHeight * scale;
+		canvas.getContext('2d').drawImage(video,0, 0, canvas.width, canvas.height);
+	}
+	else
+	{
+		var canvas = convertImageToCanvas(document.getElementById('back_image'));
+	}
+	console.log(video);
+
+
 
 
 	var lst = getElementsByIdStartsWith("item", "div", "sup");
+	console.log(canvas);
+	document.getElementById('webcam').append(canvas);
+
+
 	var k = 0;
 	arraylst = [];
 	let cc = 0;
 	for (let index = 0; index < lst.length; index++) {
-		console.log(index + " : " + lst[index].style.backgroundColor);
+		//console.log(index + " : " + lst[index].style.backgroundColor);
 		if (lst[index].style.backgroundColor === 'green')
 		{
 			arraylst[cc] = lst[index].querySelector('img');
