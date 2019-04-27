@@ -30,6 +30,6 @@
 	}
 	include("./src/main/main.php");
 	?>
-	<script src="./js/log.js"></script>
+	<script src="./js/log.js?t=<? echo time(); ?>"></script>
 </body>
 </html>

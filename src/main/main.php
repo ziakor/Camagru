@@ -50,8 +50,13 @@
 			</div>
 		</div>
 		<div class="col-4 d-flex flex-column" id ="output">
-
-
+			<form action="./src/main/montage.php" method="post">
+				<div class="form-group">
+					<input type="hidden" id="list_image" name="list_image" value="">
+					<input type="hidden" id="position_image" name="position_image" value="">
+				<button type="submit" class="btn btn-primary" name="image_sub">Submit</button>
+			</form>
+			<div id="outputc"></div>
 		</div>
 	</div>
 </div>
