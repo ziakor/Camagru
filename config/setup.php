@@ -27,12 +27,11 @@ try{
 }
 
 try{
-	$req = "CREATE TABLE IF NOT EXISTS user(
+	$req = "CREATE TABLE IF NOT EXISTS image(
 		`id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-		`pseudo` VARCHAR(255) NOT NULL,
-		`passwd` VARCHAR(255)  NOT NULL,
-		`email` VARCHAR(255) NOT NULL,
-		`confirmation` VARCHAR(255) NOT NULL
+		`image_data` VARCHAR(255) NOT NULL,
+		`pseudo_createur` VARCHAR(255)  NOT NULL,
+		'id_commentaire' INT NOT NULL
 	)";
 
 	$con->exec($req);
