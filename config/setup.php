@@ -26,4 +26,19 @@ try{
 	echo $err->getMessage() . "\ntable user creation failed!\n";
 }
 
+try{
+	$req = "CREATE TABLE IF NOT EXISTS user(
+		`id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+		`pseudo` VARCHAR(255) NOT NULL,
+		`passwd` VARCHAR(255)  NOT NULL,
+		`email` VARCHAR(255) NOT NULL,
+		`confirmation` VARCHAR(255) NOT NULL
+	)";
+
+	$con->exec($req);
+}catch(PDOException $err)
+{
+	echo $err->getMessage() . "\ntable user creation failed!\n";
+}
+
 ?>

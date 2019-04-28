@@ -187,12 +187,12 @@ function capture_image()
 	if (document.getElementById('video').style.display == "block")
 	{
 		var canvas = convertImageToCanvas(document.getElementById('video'), scale);
-		document.getElementById('list_image').value = canvas.toDataURL();
+		document.getElementById('list_image').value = canvas.toDataURL() + "|";
 	}
 	else
 	{
 		var canvas = convertImageToCanvas(document.getElementById('back_image'), scale);
-		document.getElementById('list_image').value = canvas.toDataURL();
+		document.getElementById('list_image').value = canvas.toDataURL() + "|";
 	
 	}
 	console.log(video);
@@ -212,7 +212,7 @@ function capture_image()
 		if (lst[index].style.backgroundColor === 'green')
 		{
 			arraylst[cc] = lst[index].querySelector('img');
-			document.getElementById('list_image').value +=  (getDataUrl(arraylst[cc]) + "|")
+			document.getElementById('list_image').value +=  (arraylst[cc].src + "|")
 			cc++;
 		}
 	}
