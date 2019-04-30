@@ -1,5 +1,5 @@
 <?php
-
+$_SESSION['loggued_as'] = "ziakor";
 if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_POST))
 {
 
@@ -27,34 +27,17 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
         $new = imagecreatefrompng($lst_image[$i]);
         $new = imagescale($new,$width,$height);
         imagecopy($final_img, $new,0,0,0,0,$width, $height);
-
     }
-
-
-
-
-
-    // array_shift($lst_image);
-    // for ($i=0; $i < count($lst_image); $i++) {
-    //     $image = explode(",", $lst_image[0])[1];
-    //     $data = base64_decode($image);
-    //     $new = imagecreatefromstring($data);
-    //     imagecopymerge($back, $new, 0, 0, 0, 0, $width, $height,100);
-
-    // }
-    // foreach($lst_image as $values)
-    // {
-    //     $image = explode(",", $values,2);
-    //     print_r($image);
-        // $data = base64_decode($image[1]);
-        // $new = imagecreatefromstring($data);
-        // imagecopymerge($back, $new,0,0,0,0, $width, $height,1);
-
-
-    //print_r($img);
-    header('Content-Type: image/png');
-    imagepng($final_img);
+    //header('Content-Type: image/png');
+    $name = $_SESSION['loggued_as'] . ":" . time();
+    imagepng($final_img, "../../ressources/db_images/" . $name . ".png");
+    try
+    {
+       
+    } catch(PDOException $err)
+    {
+        echo "FAIL IMAGE";
+    }
     imagedestroy($final_img);
-
 }
 ?>
