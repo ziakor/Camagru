@@ -28,7 +28,12 @@
 		header("Location: http://" . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['PHP_SELF']), '/\\') . $uri . "/src/header/log.php?valid=" . $_GET['valid'] . "&pseudo=" . $_GET['pseudo']);
 		exit;
 	}
-	include("./src/main/main.php");
+	if (array_key_exists('loggued_as', $_SESSION))
+	{
+		include("./src/main/main.php");
+	}
+
+	include("./src/footer/footer.php");
 	?>
 	<script src="./js/log.js?t=<? echo time(); ?>"></script>
 </body>

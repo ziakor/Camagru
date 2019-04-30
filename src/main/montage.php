@@ -1,4 +1,7 @@
 <?php
+
+include('../../config/database.php');
+
 $_SESSION['loggued_as'] = "ziakor";
 if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_POST))
 {
@@ -33,10 +36,13 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
     imagepng($final_img, "../../ressources/db_images/" . $name . ".png");
     try
     {
-       
-    } catch(PDOException $err)
+        $con = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
+        $sql = "INSERT INTO `image` (`pseudo`, `image_name`) VALUES (?, ?)";
+        $exec = $con->prepare($sql);
+        $exec->execute([$_SESSION['loggued_as'], $name]);
+    }   catch(PDOException $err)
     {
-        echo "FAIL IMAGE";
+        echo $err->getMessage() . "FAIL IMAGE";
     }
     imagedestroy($final_img);
 }
