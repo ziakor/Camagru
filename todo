@@ -1,9 +1,8 @@
 HEADER:
-✔ faire un header @done(19-04-20 15:14)
-☐ Finir le css(style + responsive)
-☐ Optimiser(reduire le nombres de connexion,etc..)
+	✔ faire un header @done(19-04-20 15:14)
+	☐ Finir le css(style + responsive)
 Log:
-	☐ Ajouter des messaes d'erreur
+	☐ Ajouter des messages d'erreur
 	✔ Page  de connexion/inscription/deconnexion @done(19-04-20 15:15)
 	✔ Verification lors de l'inscription @done(19-04-20 15:15)
 MAIN:
@@ -18,14 +17,14 @@ Montage:
 	✔ Pouvoir utiliser une image a la place de la cam @done(19-04-28 18:05)
 	☐ Preview du resultat
 	☐ Selectionner quelle image sauvegarder
-	☐ Enregistrer l'image
+	✔ Enregistrer l'image
 Settings:
 	☐ Changer de mots de passe
 	☐ Supprimer une image
 	☐ ? Dark Mode ?
 ☐ Optimiser(reduire le nombres de connexion,etc..)
 FOOTER:
-☐ faire des CGU
-☐ formulaire de contacts
+	☐ faire des CGU
+	☐ formulaire de contacts
+	☐ Faire le footer
 ☐ Optimiser(reduire le nombres de connexion,etc..)
-☐ Faire le footer

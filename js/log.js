@@ -76,19 +76,23 @@ function	active_sup(id)
 const constraints = {
 	video: true
 };
-
+console.log("BUG?")
 function choice(id)
 {
-	if (id === "webcam")
+	if (id == "webcam")
 	{
 		console.log("coucou")
+		document.getElementById('file_back').style.display = "none";		
 		document.getElementById('image_c').style.display = "none";
-		document.getElementById('webcam').querySelector('video').style.display="block";
+		document.getElementById('webcam').querySelector('video').style.display="block";;
+		console.log("< COUCOU")
 	}
-	else
+	else if (id == "image")
 	{
+		console.log("PASCOUCOU")
 		document.getElementById('image_c').style.display = "block";
 		document.getElementById('webcam').querySelector('video').style.display="none";
+		document.getElementById('file_back').style.display = "block";
 	}
 }
 
@@ -165,13 +169,13 @@ function convertImageToCanvas(image, scale) {
 var getDataUrl = function (img) {
 	var canvas = document.createElement('canvas')
 	var ctx = canvas.getContext('2d')
-
+	
 	canvas.width = img.width
 	canvas.height = img.height
-
-
+	
+	
 	ctx.drawImage(img, 0, 0)
-
+	
 	// If the image is not png, the format
 	// must be specified here
 	return canvas.toDataURL()
@@ -183,27 +187,22 @@ function capture_image()
 	//console.log(getElementsByIdStartsWith("item", "div", "sup"));
 	var scale = 1
 	var canvas = document.createElement("canvas");
-
+	
 	if (document.getElementById('video').style.display == "block")
 	{
 		var canvas = convertImageToCanvas(document.getElementById('video'), scale);
-		document.getElementById('list_image').value = canvas.toDataURL() + "|";
+		document.getElementById('list_image').value += canvas.toDataURL() + "|";
 	}
 	else
 	{
 		var canvas = convertImageToCanvas(document.getElementById('back_image'), scale);
-		document.getElementById('list_image').value = canvas.toDataURL() + "|";
-	
+		document.getElementById('list_image').value += canvas.toDataURL() + "|";
 	}
 	console.log(video);
-	
-	
-	
-	
+
 	var lst = getElementsByIdStartsWith("item", "div", "sup");
 	console.log(canvas);
-	
-	
+
 	var k = 0;
 	arraylst = [];
 	let cc = 0;
@@ -223,39 +222,8 @@ function capture_image()
 		canvas.getContext('2d').drawImage(arraylst[index],
 			0, 0, canvas.width, canvas.height);
 		}
-		
-		
-		
-		var img = document.createElement("img");
-		img.src = canvas.toDataURL();
-		document.getElementById('output').appendChild(img);
-	}
-	
-	
-	// var can = document.getElementById('canvas1');
-	// var ctx = can.getContext('2d');
-	
-	// ctx.fillStyle = 'rgba(255,0,0,.4)';
-	// ctx.fillRect(20,20,20,80);
-	// ctx.fillStyle = 'rgba(205,255,23,.4)';
-	// ctx.fillRect(30,30,40,50);
-	// ctx.fillStyle = 'rgba(5,255,0,.4)';
-	// ctx.fillRect(40,50,80,20);
-	
-	// var can2 = document.getElementById('canvas2');
-	// var ctx2 = can2.getContext('2d');
-	
-	// ctx2.beginPath();
-	//   ctx2.fillStyle = "pink";
-	//   ctx2.arc(50, 50, 50, 0, Math.PI * 2, 1);
-	//   ctx2.fill();
-	//   ctx2.beginPath();
-	//   ctx2.clearRect(20, 40, 60, 20);
-	
-	// var can3 = document.getElementById('canvas3');
-	// var ctx3 = can3.getContext('2d');
-	
-	
-	
-	// ctx3.drawImage(can, 0, 0);
-	// ctx3.drawImage(can2, 0, 0);
+	var img = document.createElement("img");
+	img.src = canvas.toDataURL();
+	document.getElementById('output').appendChild(img);
+	document.getElementById('list_image').value += "&";
+}
