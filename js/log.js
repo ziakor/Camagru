@@ -161,7 +161,7 @@ function convertImageToCanvas(image, scale) {
 	var canvas = document.createElement("canvas");
 	canvas.width = video.videoWidth * scale;
 	canvas.height = video.videoHeight * scale;
-	document.getElementById('position_image').value += canvas.width + ",";
+	document.getElementById('position_image').value = canvas.width + ",";
 	document.getElementById('position_image').value += canvas.height;
 	canvas.getContext('2d').drawImage(image,0, 0, canvas.width, canvas.height);
 	return canvas;
@@ -226,4 +226,8 @@ function capture_image()
 	img.src = canvas.toDataURL();
 	document.getElementById('output').appendChild(img);
 	document.getElementById('list_image').value += "&";
+}
+function remove_image
+{
+	
 }
