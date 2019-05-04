@@ -76,20 +76,20 @@ function	active_sup(id)
 const constraints = {
 	video: true
 };
-console.log("BUG?")
+//console.log("BUG?")
 function choice(id)
 {
 	if (id == "webcam")
 	{
-		console.log("coucou")
+		//console.log("coucou")
 		document.getElementById('file_back').style.display = "none";		
 		document.getElementById('image_c').style.display = "none";
 		document.getElementById('webcam').querySelector('video').style.display="block";;
-		console.log("< COUCOU")
+		//console.log("< COUCOU")
 	}
 	else if (id == "image")
 	{
-		console.log("PASCOUCOU")
+		//console.log("PASCOUCOU")
 		document.getElementById('image_c').style.display = "block";
 		document.getElementById('webcam').querySelector('video').style.display="none";
 		document.getElementById('file_back').style.display = "block";
@@ -153,7 +153,7 @@ function sortMe(a, b) {
 	q = Number(q);
 	var w = b.className.match(/[order-]+\d+/)[0].replace("order-","");
 	w = Number(w);
-	console.log( q + " : " + w);
+	//console.log( q + " : " + w);
 	return q - w;
 }
 
@@ -181,53 +181,74 @@ var getDataUrl = function (img) {
 	return canvas.toDataURL()
 }
 
+var id_rm = 0;
+
 function capture_image()
 {
-	output = document.getElementById('output');
-	//console.log(getElementsByIdStartsWith("item", "div", "sup"));
-	var scale = 1
-	var canvas = document.createElement("canvas");
-	
-	if (document.getElementById('video').style.display == "block")
-	{
-		var canvas = convertImageToCanvas(document.getElementById('video'), scale);
-		document.getElementById('list_image').value += canvas.toDataURL() + "|";
-	}
-	else
-	{
-		var canvas = convertImageToCanvas(document.getElementById('back_image'), scale);
-		document.getElementById('list_image').value += canvas.toDataURL() + "|";
-	}
-	console.log(video);
-
-	var lst = getElementsByIdStartsWith("item", "div", "sup");
-	console.log(canvas);
-
 	var k = 0;
-	arraylst = [];
-	let cc = 0;
-	for (let index = 0; index < lst.length; index++) {
-		//console.log(index + " : " + lst[index].style.backgroundColor);
-		if (lst[index].style.backgroundColor === 'green')
+	var el = getElementsByIdStartsWith("item", "div", "sup");
+	for (let index = 0; index < el.length; index++) {
+		if (el[index].style.backgroundColor === 'green')
 		{
-			arraylst[cc] = lst[index].querySelector('img');
-			document.getElementById('list_image').value +=  (arraylst[cc].src + "|")
-			cc++;
+			k = 1
 		}
 	}
-	arraylst.sort(sortMe);
-	//console.log("ARRAY: " + arraylst);
-	for (let index = 0; index < arraylst.length; index++) {
-		//console.log( " >>" +arraylst[index]);
-		canvas.getContext('2d').drawImage(arraylst[index],
-			0, 0, canvas.width, canvas.height);
+	if (k > 0)
+	{
+		output = document.getElementById('output');
+		var scale = 1
+		var canvas = document.createElement("canvas");
+		
+		if (document.getElementById('video').style.display == "block")
+		{
+			var canvas = convertImageToCanvas(document.getElementById('video'), scale);
+			document.getElementById('list_image').value += canvas.toDataURL() + "|";
 		}
-	var img = document.createElement("img");
-	img.src = canvas.toDataURL();
-	document.getElementById('output').appendChild(img);
-	document.getElementById('list_image').value += "&";
+		else
+		{
+			var canvas = convertImageToCanvas(document.getElementById('back_image'), scale);
+			document.getElementById('list_image').value += canvas.toDataURL() + "|";
+		}
+		var lst = getElementsByIdStartsWith("item", "div", "sup");
+		arraylst = [];
+		let cc = 0;
+		for (let index = 0; index < lst.length; index++) {
+			if (lst[index].style.backgroundColor === 'green')
+			{
+				arraylst[cc] = lst[index].querySelector('img');
+				document.getElementById('list_image').value +=  (arraylst[cc].src + "|")
+				cc++;
+			}
+		}
+		arraylst.sort(sortMe);
+		for (let index = 0; index < arraylst.length; index++) {
+			canvas.getContext('2d').drawImage(arraylst[index],
+				0, 0, canvas.width, canvas.height);
+			}
+		var img = document.createElement("img");
+		img.src = canvas.toDataURL();
+		img.setAttribute('id', id_rm);
+		img.setAttribute('onclick', "remove_image(" + id_rm + ")")
+		document.getElementById('output').appendChild(img);
+		document.getElementById('list_image').value += "&";
+		id_rm++;
+	}
 }
-function remove_image
+
+
+function remove_image(id)
 {
-	
+	 element = document.getElementById(id);
+	var str = document.getElementById('list_image').value;
+	var field = str.split('&')
+	field.forEach(element => {
+		console.log(element)
+	});
+	field.splice(id,1);
+	new_str = field.join('&');
+	console.log(new_str)
+	document.getElementById('list_image').value = new_str;
+	element.parentNode.removeChild(element);
+	id_rm--;
+
 }

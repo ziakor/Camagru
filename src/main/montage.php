@@ -10,10 +10,11 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 	$size = explode(",", $_POST['position_image'],2);
 	$width = intval($size[0]);
 	$height = intval($size[1]);
-	
+	//echo count($lst) . ":";
 	for ($j=0; $j < count($lst); $j++) { 
 		$lst_image = explode("|",$lst[$j]);
 		array_pop($lst_image);
+		echo $lst[$j] . " {} ";
 		$image = explode(",", $lst_image[0])[1];
 		//print_r($image = explode(",", $lst[1])[1]);
 		$data = base64_decode($image);
@@ -29,7 +30,7 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 		
 		//print_r( $lst_image);
 		for ($i=0; $i < count($lst_image); $i++) {
-			echo "$i" . "   :";
+			//echo "$i" . "   :";
 			$new = imagecreatefrompng($lst_image[$i]);
 			$new = imagescale($new,$width,$height);
 			imagecopy($final_img, $new,0,0,0,0,$width, $height);

@@ -46,7 +46,7 @@
 				</div>
 				<video autoplay id="video" style="display:none"></video>
 				<input type="file" name="file_back" id="file_back">
-				<button class="btn my-2 my-sm-0 signin" id="capture" onclick="capture_image()">Capture</button>
+				<button class="btn my-2 my-sm-0 signin disabled" id="capture" onclick="capture_image()">Capture</button>
 			</div>
 		</div>
 		<div class="col-4 d-flex flex-column" id ="output">
