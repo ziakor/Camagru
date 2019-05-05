@@ -14,7 +14,6 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 	for ($j=0; $j < count($lst); $j++) { 
 		$lst_image = explode("|",$lst[$j]);
 		array_pop($lst_image);
-		echo $lst[$j] . " {} ";
 		$image = explode(",", $lst_image[0])[1];
 		//print_r($image = explode(",", $lst[1])[1]);
 		$data = base64_decode($image);
@@ -29,13 +28,11 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 		imagecopy($final_img, $back,0,0,0,0,$width, $height);
 		
 		//print_r( $lst_image);
-		for ($i=0; $i < count($lst_image); $i++) {
-			//echo "$i" . "   :";
+		for ($i=1; $i < count($lst_image); $i++) {
 			$new = imagecreatefrompng($lst_image[$i]);
 			$new = imagescale($new,$width,$height);
 			imagecopy($final_img, $new,0,0,0,0,$width, $height);
 		}
-		//header('Content-Type: image/png');
 		$name = $_SESSION['loggued_as'] . ":" . time();
 		imagepng($final_img, "../../ressources/db_images/" . $name . "-" . $j. ".png");
 		try
@@ -50,7 +47,8 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 			$host  = $_SERVER['HTTP_HOST'];
 			$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 			$extra = 'index.php';
-			header("Location: http://$host$uri/../../$extra?montage=end");
+			header("Location: http://$host$uri/../../$extra?montage=error");
+			exit();
 		}
 		imagedestroy($final_img);
 	}
@@ -58,8 +56,10 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 	//DONT TOUCH
 	
 }
+echo "bite";
 $host  = $_SERVER['HTTP_HOST'];
 $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = 'index.php';
 header("Location: http://$host$uri/../../$extra?montage=success");
+exit();
 ?>
