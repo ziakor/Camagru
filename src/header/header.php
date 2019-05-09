@@ -10,7 +10,7 @@
 				<a class="nav-link" href="./index.php">HOME</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="./index?page=gallerie">GALLERIE</a>
+				<a class="nav-link" href="./gallerie.php">GALLERIE</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
