@@ -82,7 +82,7 @@ function choice(id)
 	if (id == "webcam")
 	{
 		//console.log("coucou")
-		document.getElementById('file_back').style.display = "none";		
+		document.getElementById('file_back').style.display = "none";
 		document.getElementById('image_c').style.display = "none";
 		document.getElementById('webcam').querySelector('video').style.display="block";;
 		//console.log("< COUCOU")

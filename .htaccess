@@ -1,2 +1,2 @@
 Allow From All
-DirectoryIndex ./index.html ./index.php
+DirectoryIndex ./index.html ./index.php ./error404.php

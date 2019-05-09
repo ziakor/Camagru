@@ -33,8 +33,8 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 			$new = imagescale($new,$width,$height);
 			imagecopy($final_img, $new,0,0,0,0,$width, $height);
 		}
-		$name = $_SESSION['loggued_as'] . ":" . time();
-		imagepng($final_img, "../../ressources/db_images/" . $name . "-" . $j. ".png");
+		$name = $_SESSION['loggued_as'] . ":" . time() . "-" . $j;
+		imagepng($final_img, "../../ressources/db_images/" . $name . ".png");
 		try
 		{
 			$con = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
