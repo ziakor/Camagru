@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	include("./config/database.php");
 ?>
 <!doctype html>
 <html lang="fr">
@@ -26,10 +27,7 @@
 		header("Location: http://" . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['PHP_SELF']), '/\\') . $uri . "/src/header/log.php?valid=" . $_GET['valid'] . "&pseudo=" . $_GET['pseudo']);
 		exit;
 	}
-	if (array_key_exists('loggued_as', $_SESSION))
-	{
-		include("./src/main/main.php");
-	}
+	include("./src/main/gallerie_view.php");
 
 	include("./src/footer/footer.php");
 	?>

@@ -100,33 +100,33 @@ function choice(id)
 //utilisation d'une image
 
 window.onload = function() {
-	
+
 	var fileInput = document.getElementById('file_back');
 	var fileDisplayArea = document.getElementById('image_c');
-	
-	
+
+
 	fileInput.addEventListener('change', function(e) {
 		var file = fileInput.files[0];
 		var imageType = /image.png/;
-		
+
 		if (file.type.match(imageType)) {
 			var reader = new FileReader();
 			fileDisplayArea.style.display = "block";
 			reader.onload = function(e) {
 				//fileDisplayArea.innerHTML = "";
-				
+
 				var img = new Image();
 				img.src = reader.result;
 				img.setAttribute('id','back_image')
 				fileDisplayArea.append(img)
 			}
-			
+
 			reader.readAsDataURL(file);
 		} else {
 			fileDisplayArea.innerHTML = "File not supported!"
 		}
 	});
-	
+
 }
 //utilisation de la webcam
 
@@ -147,8 +147,6 @@ function getElementsByIdStartsWith(container, selectorTag, prefix) {
 	return items;
 }
 function sortMe(a, b) {
-	
-	
 	var q = a.className.match(/[order-]+\d+/)[0].replace("order-","");
 	q = Number(q);
 	var w = b.className.match(/[order-]+\d+/)[0].replace("order-","");

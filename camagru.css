@@ -220,13 +220,11 @@ video {
 	width: 90%;
 }
 
-.btn_send
-{}
 /*
 **FOOTER
 */
 
-hr{ 
+hr{
 	margin: 0;
 	padding: 0;
 	height: 1px;
@@ -234,3 +232,32 @@ hr{
 	background-color: black;
 	border: none;
   }
+
+  /*
+  ** GALLERIE
+  */
+.gallerie_container
+{
+	margin: 0;
+	padding: 0;
+	min-width: 100vw;
+	background-color: rgba(0, 0, 0, 0.178);
+}
+.pagination_container
+{
+	width: 100%;
+	background-color: transparent;
+	margin: 3px;
+	padding: 0;
+}
+.pagination
+{
+	justify-content: center;
+	padding-top: 4px;
+}
+.page-item a
+{
+	color: rgba(232, 229, 234, 0.85);
+	border-color: rgba(232, 229, 234, 0.6);
+	background-color: rgba(0, 0, 0, 0.178);
+}
