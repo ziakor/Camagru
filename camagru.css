@@ -1,3 +1,12 @@
+
+.no_pad
+{
+	padding: 0;
+}
+.no_marg
+{
+	margin: 0;
+}
 html {
     overflow: scroll;
     overflow-x: hidden;
@@ -260,4 +269,19 @@ hr{
 	color: rgba(232, 229, 234, 0.85);
 	border-color: rgba(232, 229, 234, 0.6);
 	background-color: rgba(0, 0, 0, 0.178);
+}
+.row_gallerie
+{
+	width: 80%;
+}
+.img_gal
+{
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	object-fit: cover;
+}
+.div_img_gal
+{
+	padding: 1%;
 }
