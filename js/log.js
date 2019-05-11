@@ -98,7 +98,6 @@ function choice(id)
 
 
 //utilisation d'une image
-
 window.onload = function() {
 
 	var fileInput = document.getElementById('file_back');
@@ -249,4 +248,9 @@ function remove_image(id)
 	element.parentNode.removeChild(element);
 	id_rm--;
 
+}
+
+if(window.location.pathname.split("/").pop() == "gallerie.php")
+{
+	
 }

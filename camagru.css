@@ -272,7 +272,7 @@ hr{
 }
 .row_gallerie
 {
-	width: 80%;
+	justify-content: center;
 }
 .img_gal
 {
@@ -284,4 +284,13 @@ hr{
 .div_img_gal
 {
 	padding: 1%;
+}
+
+/*
+**Image Bar
+*/
+
+.lst
+{
+	background-color: red;
 }

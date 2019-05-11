@@ -3,21 +3,21 @@ HEADER:
 	☐ Finir le css(style + responsive)
 Log:
 	☐ Ajouter des messages d'erreur
-	✔ Page  de connexion/inscription/deconnexion @done(19-04-20 15:15)
-	✔ Verification lors de l'inscription @done(19-04-20 15:15)
+	✔ Page  de connexion/inscription/deconnexion @done(19-05-10 16:12)
+	✔ Verification lors de l'inscription @done(19-05-10 16:12)
 MAIN:
 ☐ du css qui claque
 Gallerie:
-	☐ lister toutes les images
+	✔ lister toutes les images @done(19-05-10 16:12)
 	☐ Pouvoir aimer
 	☐ Pouvoir commenter
 Montage:
-	✔ Lister tout les images superposables@done(19-04-25 18:03)
-	✔ Canvas avec la cam / image @done(19-04-28 18:04)
-	✔ Pouvoir utiliser une image a la place de la cam @done(19-04-28 18:05)
+	✔ Lister tout les images superposables@done(19-04-25 18:03) @done(19-05-10 16:12)
+	✔ Canvas avec la cam / image @done(19-05-10 16:13)
+	✔ Pouvoir utiliser une image a la place de la cam @done(19-05-10 16:13)
 	☐ Preview du resultat
-	✔ Selectionner quelle image sauvegarder
-	✔ Enregistrer l'image
+	✔ Selectionner quelle image sauvegarder @done(19-05-10 16:13)
+	✔ Enregistrer l'image @done(19-05-10 16:13)
 Settings:
 	☐ Changer de mots de passe
 	☐ Supprimer une image

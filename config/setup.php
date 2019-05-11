@@ -30,7 +30,8 @@ try{
 	$req = "CREATE TABLE IF NOT EXISTS image(
 		`id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 		`pseudo` VARCHAR(255)  NOT NULL,
-		`image_name` VARCHAR(255) NOT NULL
+		`image_name` VARCHAR(255) NOT NULL,
+		`like_count` LONGTEXT
 	)";
 
 	$con->exec($req);
