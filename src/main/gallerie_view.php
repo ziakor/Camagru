@@ -23,6 +23,28 @@ try
 	else
 		$prev = $nb - 1;
 
+	//add like
+	if (array_key_exists('lk',$_GET))
+	{
+		$totor = $_SESSION['loggued_as'];
+		$sql = "UPDATE image SET like_count = CONCAT_WS(',',(@cur_value := like_count),:needle, NULL) WHERE image_name = :image_name AND like_count NOT LIKE '%$totor%'";
+		$exec = $con->prepare($sql);
+		$exec->execute(array("needle" => $_SESSION['loggued_as'], "image_name" => $_GET['lk']));
+	}
+	//remove like
+	else if (array_key_exists('dis',$_GET))
+	{
+		$sql = "UPDATE image SET like_count= REPLACE(like_count, ?, '')";
+		$exec = $con->prepare($sql);
+		$exec->execute(["," . $_SESSION['loggued_as']]);
+	}
+	//del image
+	else if (array_key_exists('del',$_GET))
+	{
+		$sql = "DELETE FROM image WHERE image_name = ? and pseudo = ?";
+		$exec = $con->prepare($sql);
+		$exec->execute([$_GET['del'],$_SESSION['loggued_as']]);
+	}
 	//recuperer les image
 	$sql = "SELECT * from `image` LIMIT " . ($nb * 5) . ", " . ($nb * 5  + 5);
 	$exec = $con->prepare($sql);
@@ -30,21 +52,6 @@ try
 	$lst = $exec->fetchAll();
 	if (count($lst) > 0)
 		$size_div = round(12 / count($lst));
-	//add like
-	if (array_key_exists('ps',$_GET) && array_key_exists('name', $_GET))
-	{
-		$sql = "UPDATE image SET like_count = CONCAT_WS(',',(@cur_value := like_count),?, NULL) WHERE image_name = ? AND  like_count LIKE '%?%'' ";
-	}
-	//remove like
-	else if (array_key_exists('ps',$_GET) && array_key_exists('name', $_GET))
-	{
-		$sql = "UPDATE image SET like_count= REPLACE(like_count, ?, ?)";
-	}
-	//del image
-	else if (array_key_exists('del',$_GET) && array_key_exists('name', $_GET))
-	{
-		$sql = "DELETE FROM image WHERE image_name = ? and pseudo = ?";
-	}
 	?>
 	<div class="container gallerie_container">
 
@@ -66,8 +73,8 @@ try
 					<img  class="img_gal" src=<?php echo("./ressources/db_images/" .$value['image_name']) . ".png"?> alt= <?php echo($value['image_name'])?> >
 					<div class= "lst">
 						<span class="createur_div">Créateur : </span><span class="createur"><?php echo $value['pseudo']?></span>
-						<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?ps=" . $_SESSION['loggued_as']. "&name=" . $value['image_name']);?>><img src="./ressources/icons/like_icons.svg" alt="like_image" class="like_img" style="width: 12%;"></a>
-						<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?ds=" . $_SESSION['loggued_as']. "&name=" . $value['image_name']);?>><img src="./ressources/icons/unlike_icons.svg" alt="like_image" class="like_img" style="width: 12%;"></a>
+						<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?lk=" . $value['image_name']);?>><img src="./ressources/icons/like_icons.svg" alt="like_image" class="like_img" style="width: 12%;"></a>
+						<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?dis=" . $value['image_name']);?>><img src="./ressources/icons/unlike_icons.svg" alt="like_image" class="like_img" style="width: 12%;"></a>
 						<img src ="./ressources/icons/comment_icons.svg" alt="comment_image" class="comment_img" style="width: 12%;">
 						<?php
 							if (array_key_exists('loggued_as', $_SESSION))

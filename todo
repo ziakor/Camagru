@@ -28,3 +28,12 @@ FOOTER:
 	☐ formulaire de contacts
 	☐ Faire le footer
 ☐ Optimiser(reduire le nombres de connexion,etc..)
+
+FINISH:
+☐ error messages:
+	☐ signup
+	☐ signin
+	☐ settings
+☐ no errors
+☐ no warnings
+☐ no notices
