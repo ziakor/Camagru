@@ -2,15 +2,20 @@ HEADER:
 	✔ faire un header @done(19-04-20 15:14)
 	☐ Finir le css(style + responsive)
 Log:
-	☐ Ajouter des messages d'erreur
+	☐ Ajouter message dans log.txt quand une erreur apparait(avec la date et le pseudo si connecter)
 	✔ Page  de connexion/inscription/deconnexion @done(19-05-10 16:12)
 	✔ Verification lors de l'inscription @done(19-05-10 16:12)
 MAIN:
 ☐ du css qui claque
 Gallerie:
 	✔ lister toutes les images @done(19-05-10 16:12)
-	☐ Pouvoir aimer
-	☐ Pouvoir commenter
+	✔ Pouvoir aimer @done(19-05-12 19:06)
+	✔ Pouvoir dislike @done(19-05-12 19:06)
+	✔ Pouvoir supprimer une image @done(19-05-12 19:07)
+	Comment:
+		☐ Envoyer un commentaire
+		☐ lister les commentaire
+		☐ mail quand un commentaire est envoyé
 Montage:
 	✔ Lister tout les images superposables@done(19-04-25 18:03) @done(19-05-10 16:12)
 	✔ Canvas avec la cam / image @done(19-05-10 16:13)
@@ -19,9 +24,10 @@ Montage:
 	✔ Selectionner quelle image sauvegarder @done(19-05-10 16:13)
 	✔ Enregistrer l'image @done(19-05-10 16:13)
 Settings:
+	☐ changer l'email
+	☐ changer le pseudo
 	☐ Changer de mots de passe
-	☐ Supprimer une image
-	☐ ? Dark Mode ?
+	☐ White mode
 ☐ Optimiser(reduire le nombres de connexion,etc..)
 FOOTER:
 	☐ faire des CGU
@@ -34,6 +40,8 @@ FINISH:
 	☐ signup
 	☐ signin
 	☐ settings
+	☐ gallerie
+	☐ montage
 ☐ no errors
 ☐ no warnings
 ☐ no notices
