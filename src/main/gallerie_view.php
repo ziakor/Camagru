@@ -36,7 +36,7 @@ try
 	{
 		$sql = "UPDATE image SET like_count= REPLACE(like_count, ?, '')";
 		$exec = $con->prepare($sql);
-		$exec->execute(["," . $_SESSION['loggued_as']]);
+		$exec->execute([("," . $_SESSION['loggued_as'])]);
 	}
 	//del image
 	else if (array_key_exists('del',$_GET))
@@ -46,6 +46,8 @@ try
 		$exec->execute([$_GET['del'],$_SESSION['loggued_as']]);
 	}
 	//recuperer les image
+	if ($nb > 999999999999999999)
+		$nb = 2147483647;
 	$sql = "SELECT * from `image` LIMIT " . ($nb * 5) . ", " . ($nb * 5  + 5);
 	$exec = $con->prepare($sql);
 	$exec->execute();
@@ -69,24 +71,71 @@ try
 			<?php
 			foreach ($lst as $key => $value) {
 				?>
-				<div class="<?php echo("col-2 no_pad div_img_gal  ")?>" id=<?php echo "" . $key ?>>
+				<!-- <div class="<?php echo("col-2 no_pad div_img_gal  ")?>" id=<?php echo "" . $key ?>>
 					<img  class="img_gal" src=<?php echo("./ressources/db_images/" .$value['image_name']) . ".png"?> alt= <?php echo($value['image_name'])?> >
 					<div class= "lst">
-						<span class="createur_div">Créateur : </span><span class="createur"><?php echo $value['pseudo']?></span>
-						<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?lk=" . $value['image_name']);?>><img src="./ressources/icons/like_icons.svg" alt="like_image" class="like_img" style="width: 12%;"></a>
-						<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?dis=" . $value['image_name']);?>><img src="./ressources/icons/unlike_icons.svg" alt="like_image" class="like_img" style="width: 12%;"></a>
-						<img src ="./ressources/icons/comment_icons.svg" alt="comment_image" class="comment_img" style="width: 12%;">
+						<span class="createur"><?php echo $value['pseudo']?></span>
+						<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?lk=" . $value['image_name']);?>><img src="./ressources/icons/like_icons.svg" alt="like_image" class="like_img" ></a>
+						<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?dis=" . $value['image_name']);?>><img src="./ressources/icons/unlike_icons.svg" alt="like_image" class="like_img" ></a>
+						<img src ="./ressources/icons/comment_icons.svg" alt="comment_image" class="comment_img">
 						<?php
 							if (array_key_exists('loggued_as', $_SESSION))
 							{
 								if ($value['pseudo'] == $_SESSION['loggued_as'])
-								?><a href=<?php echo("?del=" . $value['image_name']) ?>><img src="./ressources/icons/delete_icons.svg" style="width: 12%;"></a>
+								?><a href=<?php echo("?del=" . $value['image_name']) ?>><img src="./ressources/icons/delete_icons.svg" ></a>
 								<?php
 							}
 						?>
 					</div>
+				</div> -->
+
+
+				<!-- TEST -->
+				<div class="<?php echo("col-2 no_pad div_img_gal  ")?>" id=<?php echo "" . $key ?>>
+					<img  class="img_gal" src=<?php echo("./ressources/db_images/" .$value['image_name']) . ".png"?> alt= <?php echo($value['image_name'])?> >
+					<div class= "row bar">
+						<div class="col-4">
+							<span class="createur"><?php echo $value['pseudo']?></span>
+						</div>
+						<div class="col-2">
+							<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?lk=" . $value['image_name']);?>><img src="./ressources/icons/like_icons.svg" alt="like_image" class="like_img" ></a>
+						</div>
+						<div class="col-2">
+							<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?dis=" . $value['image_name']);?>><img src="./ressources/icons/unlike_icons.svg" alt="like_image" class="dislike_img" ></a>
+						</div>
+						<div class="col-2">
+							<img src ="./ressources/icons/comment_icons.svg" alt="comment_image" class="comment_img">
+						</div>
+						<div class="col-2">
+						<?php
+							if (array_key_exists('loggued_as', $_SESSION))
+							{
+								if ($value['pseudo'] == $_SESSION['loggued_as'])
+								?><a href=<?php echo("?del=" . $value['image_name']) ?>><img src="./ressources/icons/delete_icons.svg" class="delete_icons"></a>
+								<?php
+							}
+						?>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 comment_form">
+							<?php
+							if (array_key_exists('loggued_as', $_SESSION))
+							{
+								?>
+								<form action="./src/main/comment.php" id ="form_comment" method="post">
+									<input type="text" name="commentaire" id="commentaire_input" placeholder="Envoyer un commentaire">
+									<input type="submit" value="Send" id="com_sub" style="display:none;"/>
+								</form>
+
+								<?php
+							}
+							?>
+						</div>
+					</div>
 				</div>
-				<?php
+
+						<?php
 			}
 			?>
 			<!-- <div class="col-4" id="1">
