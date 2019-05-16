@@ -359,3 +359,23 @@ hr{
 {
 	width: 100%;
 }
+
+/*
+**list commentaire
+*/
+
+.lst_com
+{
+	margin: 0;
+	padding: 0;
+	border: 2px solid black;
+	word-break: keep-all;
+}
+.test
+{
+}
+
+.id_com
+{
+	display: inline;
+}

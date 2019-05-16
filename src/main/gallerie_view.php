@@ -51,7 +51,23 @@ try
 	$sql = "SELECT * from `image` LIMIT " . ($nb * 5) . ", " . ($nb * 5  + 5);
 	$exec = $con->prepare($sql);
 	$exec->execute();
+	$lst_comment = array();
 	$lst = $exec->fetchAll();
+	$count = 0;
+	foreach ($lst as $key => $value) {
+		$count++;
+	}
+
+	//get comment
+
+	for ($i=0; $i < $count; $i++) { 
+		$sql = "SELECT * FROM `comment` WHERE comment.image_name = ? ORDER BY `comment`.`image_name`";
+		$exec = $con->prepare($sql);
+		$exec->execute([$lst[$i]['image_name']]);
+		$tmp = $exec->fetchAll();
+		$lst_comment[] = $tmp;
+	}
+	$t = 0;
 	if (count($lst) > 0)
 		$size_div = round(12 / count($lst));
 	?>
@@ -123,30 +139,33 @@ try
 							if (array_key_exists('loggued_as', $_SESSION))
 							{
 								?>
-								<form action="./src/main/comment.php" id ="form_comment" method="post">
+								<form action="<?php echo "./src/main/comment.php?img_name=" . $value["image_name"]  ?>" id ="form_comment" method="post">
 									<input type="text" name="commentaire" id="commentaire_input" placeholder="Envoyer un commentaire">
 									<input type="submit" value="Send" id="com_sub" style="display:none;"/>
 								</form>
-
 								<?php
 							}
 							?>
 						</div>
 					</div>
+					<div class="row lst_com">
+						<div class="col-12 test">
+							<?php
+	
+							$e = 0;
+							foreach($lst_comment[$key] as $key_com => $val_com)
+							{?>
+								<div><?php echo $val_com['pseudo'] . ": " . $val_com['content']?></div> 
+							<?php
+							}
+							?>
+						</div>
+					</div>
 				</div>
-
 						<?php
 			}
 			?>
-			<!-- <div class="col-4" id="1">
-				<img src=<?php echo("./ressources/db_images/" .$lst[0]['image_name']) . ".png"?> alt="" srcset="">
-			</div>
-			<div class="col-4" id="2">
-			<img src=<?php echo("./ressources/db_images/" .$lst[1]['image_name']) . ".png"?> alt="" srcset="">
-			</div>
-			<div class="col-4" id="3">
-			<img src=<?php echo("./ressources/db_images/" .$lst[2]['image_name']) . ".png"?> alt="" srcset="">
-			</div> -->
+			
 		</div>
 	</div>
 	<?php

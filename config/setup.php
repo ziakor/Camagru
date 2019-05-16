@@ -53,11 +53,11 @@ try{
 	echo $err->getMessage() . "\ntable user creation failed!\n";
 }
 try{
-	$req = "CREATE TABLE IF NOT EXISTS `commentaire`(
+	$req = "CREATE TABLE IF NOT EXISTS `comment`(
 		`id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 		`pseudo` VARCHAR(255)  NOT NULL,
 		`image_name` VARCHAR(255) NOT NULL,
-		`commentaire` TEXT NOT NULL,
+		`content` TEXT NOT NULL,
 		`date_comment` DATETIME NOT NULL
 	)";
 
