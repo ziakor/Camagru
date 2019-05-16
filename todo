@@ -14,9 +14,9 @@ Gallerie:
 	☐ Compteur de like sur chaque image
 	✔ Pouvoir supprimer une image @done(19-05-12 19:07)
 	Comment:
-		☐ Envoyer un commentaire
-		☐ lister les commentaire
-		☐ mail quand un commentaire est envoyé
+		✔ Envoyer un commentaire @done(19-05-16 18:37)
+		✔ lister les commentaire @done(19-05-16 18:37)
+		✔ mail quand un commentaire est envoyé @done(19-05-16 18:37)
 Montage:
 	✔ Lister tout les images superposables@done(19-04-25 18:03) @done(19-05-10 16:12)
 	✔ Canvas avec la cam / image @done(19-05-10 16:13)
