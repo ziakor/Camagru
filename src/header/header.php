@@ -12,9 +12,16 @@
 			<li class="nav-item">
 				<a class="nav-link" href="./gallerie.php">GALLERIE</a>
 			</li>
+			<?php 
+				if (array_key_exists('loggued_as', $_SESSION))
+				{
+					?>
 			<li class="nav-item">
-				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+				<a class="nav-link" href="./settings.php">SETTINGS</a>
 			</li>
+					<?php
+				}
+			?>
 			</ul>
 			<?php
 				if (!array_key_exists('loggued_as', $_SESSION))

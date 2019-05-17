@@ -17,7 +17,8 @@ try{
 		`pseudo` VARCHAR(25) NOT NULL,
 		`passwd` VARCHAR(255)  NOT NULL,
 		`email` VARCHAR(255) NOT NULL,
-		`confirmation` VARCHAR(255) NOT NULL
+		`confirmation` VARCHAR(255) NOT NULL,
+		`receive_mail` BOOLEAN NOT NULL DEFAULT 1
 	)";
 
 	$con->exec($req);

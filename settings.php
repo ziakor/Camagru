@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	$_SESSION['page'] = 0;
+
 	require_once "./config/setup.php";
 ?>
 <!doctype html>
@@ -30,7 +30,7 @@
 	}
 	if (array_key_exists('loggued_as', $_SESSION))
 	{
-		include("./src/main/main.php");
+		include("./src/main/settings_view.php");
 	}
 
 	include("./src/footer/footer.php");

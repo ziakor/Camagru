@@ -26,7 +26,7 @@ function Form_connection(type){
 	{
 		var text="<div class=\"form-group\">"
 		+ "<label for=\"InputPseudo\">Pseudo:</label>"
-		+ "<input type=\"username\" class=\"form-control\" placeholder=\"5 caracteres alphanumeriques\" id=\"InputPseudo\" name=\"InputPseudo\" pattern=\"[a-zA-z0-9]{5,}\">"
+		+ "<input type=\"username\" class=\"form-control\" placeholder=\"5 caracteres alphanumeriques\" id=\"InputPseudo\" name=\"InputPseudo\" pattern=\"[a-zA-Z0-9]{5,27}\">"
 		+ "</div>"
 		+ "<div class=\"form-group\">"
 		+ "<label for=\"InputPassword\">Password:</label>"
