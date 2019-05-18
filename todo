@@ -23,25 +23,21 @@ Montage:
 	✔ Lister tout les images superposables@done(19-04-25 18:03) @done(19-05-10 16:12)
 	✔ Canvas avec la cam / image @done(19-05-10 16:13)
 	✔ Pouvoir utiliser une image a la place de la cam @done(19-05-10 16:13)
-	☐ Preview du resultat
 	✔ Selectionner quelle image sauvegarder @done(19-05-10 16:13)
 	✔ Enregistrer l'image @done(19-05-10 16:13)
 	✔ protection nb page @done(19-05-17 13:08)
-	☐ pouvoir utiliser un jpg, jpeg ou png @started(19-05-17 18:30)
+	✔ pouvoir utiliser un jpg, jpeg ou png @started(19-05-17 18:30) @done(19-05-18 21:06) @lasted(1d2h36m51s)
 Settings:
-	☐ changer l'email
-	☐ changer le pseudo
-	☐ Changer de mots de passe
-	☐ White mode
-	☐ checkbox recevoir mail quand un commentaire
-☐ Optimiser(reduire le nombres de connexion,etc..)
+	✔ changer l'email @done(19-05-18 20:16)
+	✔ changer le pseudo @done(19-05-18 20:16)
+	✔ Changer de mots de passe @done(19-05-18 20:16)
+	✔ checkbox recevoir mail quand un commentaire @done(19-05-18 21:01)
 FOOTER:
-	☐ faire des CGU
-	☐ formulaire de contacts
-	☐ Faire le footer
+	✔ Faire le footer @done(19-05-18 20:16)
 ☐ Optimiser(reduire le nombres de connexion,etc..)
 
 FINISH:
+☐ faire un htaccess
 ☐ error messages:
 	☐ signup
 	☐ signin
@@ -51,3 +47,4 @@ FINISH:
 ☐ no errors
 ☐ no warnings
 ☐ no notices
+☐ refaire les redirection

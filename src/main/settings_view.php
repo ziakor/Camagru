@@ -31,7 +31,14 @@
                             <label class="form-check-label mail_receive" for="defaultCheck1">
                                 receive mail:
                             </label>
-                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+
+                            <?php
+                                if ($_SESSION['receive_mail'] == true) {
+                                    echo '<input class="form-check-input" id="input_receive_mail" type="checkbox" value="true" name="check_mail" onclick="change_check()" checked>';
+                                } else {
+                                    echo '<input class="form-check-input" id="input_receive_mail" type="checkbox" value="false" name="check_mail" onclick="change_check()">';
+                                }
+                            ?>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>

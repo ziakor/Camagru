@@ -20,6 +20,7 @@ function Form_connection(type){
 		+ "<label for=\"InputPassword1\">Password</label>"
 		+ "<input type=\"password\" class=\"form-control rz\" id=\"InputPassword1\" autocomplete=\"current-password\" name=\"InputPassword\" placeholder=\"Password\">"
 		+ "</div>"
+		+'<a href="./src/header/forget.php" id="forget_password">Forget password</a>'
 		+ "<input class=\"btn btn-primary\" type=\"submit\" name=\"login_sub\" value=\"identifiez-vous\">"
 	}
 	else if (type === "signup_form")
@@ -106,9 +107,7 @@ window.onload = function() {
 
 	fileInput.addEventListener('change', function(e) {
 		var file = fileInput.files[0];
-		var imageType = /image.png/;
-
-		if (file.type.match(imageType)) {
+		if (file.type.match(/image.png/) ||file.type.match(/image.jpg/) ||file.type.match(/image.jpeg/)) {
 			var reader = new FileReader();
 			fileDisplayArea.style.display = "block";
 			reader.onload = function(e) {
@@ -253,4 +252,21 @@ function remove_image(id)
 if(window.location.pathname.split("/").pop() == "gallerie.php")
 {
 	
+}
+
+/*
+**SETTINGS FUNCTION
+*/
+
+function change_check()
+{
+	var parent = document.getElementById('input_receive_mail');
+	if (parent.checked === true)
+	{
+		parent.value = 1;
+	}
+	if (parent.checked === false)
+	{
+		parent.value = 0;
+	}
 }

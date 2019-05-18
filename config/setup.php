@@ -18,7 +18,7 @@ try{
 		`passwd` VARCHAR(255)  NOT NULL,
 		`email` VARCHAR(255) NOT NULL,
 		`confirmation` VARCHAR(255) NOT NULL,
-		`receive_mail` BOOLEAN NOT NULL DEFAULT 1
+		`receive_mail` BOOLEAN  NOT NULL DEFAULT 1
 	)";
 
 	$con->exec($req);
@@ -68,5 +68,4 @@ try{
 {
 	echo $err->getMessage() . "\ntable user creation failed!\n";
 }
-
 ?>

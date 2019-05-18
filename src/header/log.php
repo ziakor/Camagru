@@ -32,6 +32,7 @@ function CheckForLog($con,$email,$passwd)
 		$ff = $exec->fetchAll();
 		if (count($ff) > 0 && $ff[0]['confirmation'] == "0"){
 			$_SESSION['loggued_as'] = $ff[0]['pseudo'];
+			$_SESSION['receive_mail'] = $ff[0]['receive_mail'];
 			$_SESSION['email'] = $email;
 			return (1);
 		}

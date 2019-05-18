@@ -144,7 +144,7 @@ $_SESSION['page'] = $nb;
 {
 	$error = "true";
 	$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/gallerie.php?error=" . $error . "&page=" . $_SESSION['page'];
-header("Location: http://" . $url);
-exit();
+	header("Location: http://" . $url);
+	exit();
 }
 ?>
