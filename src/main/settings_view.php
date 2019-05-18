@@ -12,7 +12,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Pseudo</label>
-                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" pattern="[a-zA-z0-9]{5, 27}" placeholder="Change pseudo" name="new_pseudo">
+                            <input type="text" class="form-control" id="pseudo" pattern="[a-zA-z0-9]{5, 27}" placeholder="Change pseudo" name="new_pseudo">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Current password</label>
@@ -26,6 +26,12 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password Confirmation</label>
                             <input type="password" class="form-control" id="new_password2" placeholder="Confirm password" pattern="[a-zA-z0-9]{7,}" name="new_passwd2">
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label mail_receive" for="defaultCheck1">
+                                receive mail:
+                            </label>
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>

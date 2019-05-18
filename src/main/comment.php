@@ -9,12 +9,14 @@ try {
     $exec= $con->prepare($sql);
     $exec->execute(array("image_pseudo" => explode(":",$_GET['img_name'])[0],"image_name" => $_GET['img_name']));
     $data = $exec->fetch();
+    print_r($data);
 
     try{
-    $sql = "INSERT INTO `comment`(`pseudo`,`image_name`,`content`,`date_comment`) VALUES(:pseudo, :image_name, :content, NOW())";
+    $sql = "INSERT INTO `comment`(`pseudo`,`image_name`,`content`,`date_comment`,`id_image`) VALUES(:pseudo, :image_name, :content, NOW(), :id_image)";
     $exec = $con->prepare($sql);
-    $exec->execute(array("pseudo" => $_SESSION['loggued_as'], "image_name"=> $data['image_name'], "content"=> $_POST['commentaire']));
-    mail($data['email'], $_GET['img_name'] . " a reçu un commentaire!", "Bonjour, votre image " . $_GET['img_name'] . " a reçu un commentaire de la part de " . $_SESSION['loggued_as'] . ".", "FROM: admin@camagru.com");
+    $exec->execute(array("pseudo" => $_SESSION['loggued_as'], "image_name"=> $data['image_name'], "content"=> $_POST['commentaire'], "id_image" => $data['0']));
+    mail($data['email'], $_GET['img_name'] . " a reçu un commentaire!", "Bonjour, votre image " . $_GET['img_name'] . " a reçu un commentaire de la part de " . 
+    $_SESSION['loggued_as'] . ".", "FROM: admin@camagru.com");
     
     }catch(PDOException $err)
     {

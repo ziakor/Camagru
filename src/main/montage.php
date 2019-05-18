@@ -1,8 +1,7 @@
 <?php
 
 include('../../config/database.php');
-
-$_SESSION['loggued_as'] = "ziakor";
+session_start();
 if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_POST))
 {
 	$lst = explode("&", $_POST['list_image']);
@@ -11,7 +10,7 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 	$width = intval($size[0]);
 	$height = intval($size[1]);
 	//echo count($lst) . ":";
-	for ($j=0; $j < count($lst); $j++) { 
+	for ($j=0; $j < count($lst); $j++) {
 		$lst_image = explode("|",$lst[$j]);
 		array_pop($lst_image);
 		$image = explode(",", $lst_image[0])[1];
@@ -20,13 +19,13 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 		$back = imagecreatefromstring($data);
 		$back = imagescale($back,$width);
 		//TEST
-		
+
 		//active la transparence
 		$final_img = imagecreatetruecolor($width, $height);
 		imagealphablending($final_img, true);
 		imagesavealpha($final_img, true);
 		imagecopy($final_img, $back,0,0,0,0,$width, $height);
-		
+
 		//print_r( $lst_image);
 		for ($i=1; $i < count($lst_image); $i++) {
 			$new = imagecreatefrompng($lst_image[$i]);
@@ -52,10 +51,11 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 		}
 		imagedestroy($final_img);
 	}
-	
+
 	//DONT TOUCH
-	
+
 }
+echo $name;
 echo "bite";
 $host  = $_SERVER['HTTP_HOST'];
 $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');

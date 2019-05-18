@@ -58,6 +58,7 @@ try{
 		`id` INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 		`pseudo` VARCHAR(255)  NOT NULL,
 		`image_name` VARCHAR(255) NOT NULL,
+		`id_image` INT NOT NULL,
 		`content` TEXT NOT NULL,
 		`date_comment` DATETIME NOT NULL
 	)";

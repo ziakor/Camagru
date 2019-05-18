@@ -41,6 +41,7 @@ try
 		$exec = $con->prepare($sql);
 		$exec->execute([$_GET['del'],$_SESSION['loggued_as']]);
 	}
+	
 	//recuperer les image
 	$sql = "SELECT * from `image` LIMIT " . ($nb * 5) . ", " . ($nb * 5  + 5);
 	$exec = $con->prepare($sql);
@@ -48,7 +49,6 @@ try
 	$lst_comment = array();
 	$lst = $exec->fetchAll();
 	$count = $exec->rowCount();
-
 	//get comment
 
 	for ($i=0; $i < $count; $i++) {
@@ -63,7 +63,6 @@ try
 		$size_div = round(12 / count($lst));
 	?>
 	<div class="container-fluid gallerie_container">
-
 		<nav aria-label="pagination_container" class="pagination_container">
 			<ul class="pagination">
 				<li class="page-item"><a class="page-link" href="<?php echo("?page=0")?>">First</a></li>
