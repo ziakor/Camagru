@@ -3,7 +3,7 @@ session_start();
 
 include('../../config/database.php');
 
-
+$error= "";
 //Fonction pour verifier si le pseudo ou le mail est libre.
 function CheckForCreation($con, $email, $pseudo)
 {
@@ -47,14 +47,11 @@ function CheckForLog($con,$email,$passwd)
 //Fonction pour envoyer le mail de confirmation après l'inscription
 function send_email($email, $pseudo, $key)
 {
-	$to_email = $email;
+	$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/index.php";
 	$subject = "Confirmation de compte" . $pseudo;
 	$headers = "From: admin@camagru.com";
-	$host  = $_SERVER['HTTP_HOST'];
-	$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-	$extra = 'index.php';
-	$body = "Lien de validation:" . " http://$host$uri/../../$extra?valid=" . $key . "&pseudo=" . $pseudo;
-	mail($to_email, $subject, $body, $headers);
+	$body = "Bonjour,\nVoici le lien de validation de votre compte : " . "http://" .$url ."?valid=" . $key . "&pseudo=" . $pseudo;
+	mail($email, $subject, $body, $headers);
 }
 
 
@@ -83,16 +80,19 @@ try
 		if (array_key_exists('use_cond', $_POST) && array_key_exists('InputPseudo', $_POST)&& array_key_exists('InputPassword1', $_POST) &&
 			array_key_exists('InputPassword2', $_POST) && array_key_exists('InputEmail', $_POST))
 		{
-
-				if (CheckForCreation($con,$_POST['InputEmail'],$_POST['InputPseudo']) === 0 && strcmp(htmlspecialchars($_POST['InputPassword1']),htmlspecialchars($_POST['InputPassword2'])) == 0)
+				$pass1 = htmlspecialchars($_POST['InputPassword1']);
+				$pass2 = htmlspecialchars($_POST['InputPassword2']);
+				$email = htmlspecialchars($_POST['InputEmail']);
+				$pseudo = htmlspecialchars($_POST['InputPseudo']);
+				$regex = '/[a-zA-z0-9]{6,30}/';
+				echo preg_match($regex,htmlspecialchars($_POST['InputPassword1']));
+				if (preg_match($regex, $pass1) && preg_match($regex, $pass2)  && CheckForCreation($con,$email,$pseudo) === 0 && strcmp($pass1,$pass2) == 0)
 				{
-					$key_confirm = hash('Whirlpool', $_POST['InputPseudo'] . hash('Whirlpool' ,htmlspecialchars($_POST['InputPassword1'])) . $_POST['InputEmail']);
+					$key_confirm = hash('Whirlpool', $_POST['InputPseudo'] . hash('Whirlpool' ,$pass1) . $email);
 					$exec = $con->prepare("INSERT INTO `user` (`pseudo`, `passwd`, `email`, `confirmation`) VALUES (?, ?, ?, ?)");
-					$exec->execute([htmlspecialchars($_POST['InputPseudo']),
-					hash('Whirlpool' ,htmlspecialchars($_POST['InputPassword1'])), htmlspecialchars($_POST['InputEmail']), $key_confirm]);
-					send_email($_POST['InputEmail'], $_POST['InputPseudo'], $key_confirm);
-					header("Refresh:0");
-					exit;
+					$exec->execute([htmlspecialchars($pseudo),
+					hash('Whirlpool' ,$pass1), $email, $key_confirm]);
+					send_email($email, $pseudo, $key_confirm);
 				}
 				else
 				{
@@ -103,20 +103,18 @@ try
 	//action: validation
 	if(array_key_exists('valid', $_GET) && array_key_exists('pseudo', $_GET))
 	{
+			$pseudo = htmlspecialchars($_GET['pseudo']);
+			$valid = htmlspecialchars($_GET['valid']);
 			if ($_GET['valid'] != "0"){
 			$sql = "UPDATE USER SET confirmation = '0' WHERE pseudo = ? AND confirmation = ?";
 			$exec = $con->prepare($sql);
-			$res = $exec->execute([$_GET['pseudo'], $_GET['valid']]);
+			$res = $exec->execute([$pseudo, $valid]);
 			}
-		header("Location: http://" . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['PHP_SELF']), '/\\') . "../../../" . "index.php");
-		exit;
 	}
 }catch(PDOException $err)
 {
-	echo "fail";
+	$error = "?error=true";
 }
-
-
-//redirection sur lindex si une action a fail
-header("Location: http://" . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['PHP_SELF']), '/\\') . "../../../" . "index.php");
+$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/index.php" . $error;
+header("Location: http://" . $url);
 exit;

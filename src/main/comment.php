@@ -22,16 +22,14 @@ try {
     }
     }catch(PDOException $err)
     {
-        $error = true;
-        echo "fail 2e requete";
+        $error = "?error=true";
     }
 } catch (PDOException $err ) {
-    $error = true;
-    echo " Fail comment.php";
+    $error = "?error=true";
 }
 
 $url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/gallerie.php?error=" . $error;
-header("Location: http://" . $url);
+header("Location: http://" . $url . $error);
 exit();
 
 ?>

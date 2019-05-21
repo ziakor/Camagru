@@ -115,6 +115,12 @@ input {
 	display: inline-block;
 }
 
+#forget_link a
+{
+	color: rgba(232, 229, 234, 0.678)
+}
+
+#forget_link
 /*
 ** MAIN
 */
@@ -295,6 +301,8 @@ hr{
 
 .bar
 {
+
+	justify-content: space-around;
 	padding: 0;
 	margin: 0;
 	border: 2px solid black;
@@ -371,9 +379,6 @@ hr{
 	border: 2px solid black;
 	word-break: keep-all;
 }
-.test
-{
-}
 
 .id_com
 {
@@ -404,11 +409,55 @@ hr{
 }
 .form_change input[type="email"], input[type="password"], input[type="text"]
 {
-	width: 50%;
+	width: 100%;
 	margin: auto;
+}
+
+.settings_input
+{
+	width: 60% !important;
 }
 
 .mail_receive
 {
 	padding-right: 8%;
+}
+
+.rz
+{
+	margin: auto;
+
+}
+.icc
+{
+	padding: 0;
+	margin: 0;
+}
+.name_bar
+{
+	margin: auto;
+	padding: 0;
+}
+.tt
+{
+	padding: 0;
+	max-width: 17%;
+}
+.createur
+{
+	border: 2px solid rgb(32, 29, 34);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+.like_count
+{
+	border: 2px solid rgb(32, 29, 34);
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+.like_count span
+{
+	padding: 0;
 }

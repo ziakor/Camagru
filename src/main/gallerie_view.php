@@ -80,24 +80,25 @@ try
 				<div class="<?php echo("col-2 no_pad div_img_gal  ")?>" id=<?php echo "" . $key ?>>
 					<img  class="img_gal" src=<?php echo("./ressources/db_images/" .$value['image_name']) . ".png"?> alt= <?php echo($value['image_name'])?> >
 					<div class= "row bar">
-						<div class="col-4">
-							<span class="createur"><?php echo $value['pseudo']?></span>
+						<div class="col-6 createur">
+							<span >By: <?php echo $value['pseudo']?></span>
 						</div>
-						<div class="col-2">
-							<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?lk=" . $value['image_name']);?>><img src="./ressources/icons/like_icons.svg" alt="like_image" class="like_img" ></a>
+						<div class="col-6 like_count">
+							<span>Like count: <?php echo count($lst_comment[$key])?></span>
 						</div>
-						<div class="col-2">
-							<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?dis=" . $value['image_name']);?>><img src="./ressources/icons/unlike_icons.svg" alt="like_image" class="dislike_img" ></a>
+						<hr>
+						<div class="col-4 tt">
+							<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?lk=" . $value['image_name']);?>><img src="./ressources/icons/like_icons.svg" alt="like_image" class="like_img icc" ></a>
 						</div>
-						<div class="col-2">
-							<img src ="./ressources/icons/comment_icons.svg" alt="comment_image" class="comment_img">
+						<div class="col-4 tt">
+							<a href=<?php if (array_key_exists('loggued_as',$_SESSION))echo("?dis=" . $value['image_name']);?>><img src="./ressources/icons/unlike_icons.svg" alt="like_image" class="dislike_img icc" ></a>
 						</div>
-						<div class="col-2">
+						<div class="col-4 tt">
 						<?php
 							if (array_key_exists('loggued_as', $_SESSION))
 							{
 								if ($value['pseudo'] == $_SESSION['loggued_as'])
-								?><a href=<?php echo("?del=" . $value['image_name']) ?>><img src="./ressources/icons/delete_icons.svg" class="delete_icons"></a>
+								?><a href=<?php echo("?del=" . $value['image_name']) ?>><img src="./ressources/icons/delete_icons.svg" class="delete_icons icc"></a>
 								<?php
 							}
 						?>

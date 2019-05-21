@@ -28,6 +28,9 @@
 			<div id="sup9" class="item_content img-fluid">
 			<img src="./ressources/insert/vlaroque-removebg.png" onclick="active_sup('sup9')" class="img-fluid " alt="Responsive image">
 			</div>
+			<div id="sup10" class="item_content img-fluid">
+			<img src="./ressources/insert/oespion-removebg.png" onclick="active_sup('sup10')" class="img-fluid " alt="Responsive image">
+			</div>
 
 		</div>
 		<div class="col-6" id="montage_view" >
