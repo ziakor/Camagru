@@ -84,9 +84,10 @@ try
 				$pass2 = htmlspecialchars($_POST['InputPassword2']);
 				$email = htmlspecialchars($_POST['InputEmail']);
 				$pseudo = htmlspecialchars($_POST['InputPseudo']);
-				$regex = '/[a-zA-z0-9]{6,30}/';
-				echo preg_match($regex,htmlspecialchars($_POST['InputPassword1']));
-				if (preg_match($regex, $pass1) && preg_match($regex, $pass2)  && CheckForCreation($con,$email,$pseudo) === 0 && strcmp($pass1,$pass2) == 0)
+
+				$regex_pseudo = '/^[a-zA-Z0-9]{5,27}$/';
+				$regex = '/^[a-zA-z0-9]{6,30}$/';
+				if (preg_match($regex, $pass1) && preg_match($regex, $pass2) && preg_match($regex_pseudo, $pseudo) && CheckForCreation($con,$email,$pseudo) === 0 && strcmp($pass1,$pass2) == 0)
 				{
 					$key_confirm = hash('Whirlpool', $_POST['InputPseudo'] . hash('Whirlpool' ,$pass1) . $email);
 					$exec = $con->prepare("INSERT INTO `user` (`pseudo`, `passwd`, `email`, `confirmation`) VALUES (?, ?, ?, ?)");

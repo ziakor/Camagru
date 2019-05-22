@@ -57,7 +57,7 @@
 				<div class="form-group">
 					<input type="hidden" id="list_image" name="list_image" value="">
 					<input type="hidden" id="position_image" name="position_image" value="">
-				<button type="submit" class="btn btn-primary btn_send" name="image_sub">Submit</button>
+				<button type="submit" class="btn btn-primary btn_send" name="image_sub" id="send_montage">Submit</button>
 			</form>
 			<div id="outputc"></div>
 		</div>

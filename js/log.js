@@ -102,6 +102,7 @@ function choice(id)
 
 //utilisation d'une image
 if(window.location.pathname.split("/").pop() == "index.php"){
+	if (document.getElementById('output')){
 window.onload = function() {
 
 	var fileInput = document.getElementById('file_back');
@@ -128,15 +129,25 @@ window.onload = function() {
 		}
 	});
 
-}}
+}
+	}
+}
+
 //utilisation de la webcam
 if(window.location.pathname.split("/").pop() == "index.php"){
-if (document.getElementById('video').style.display !== "none"){
-const video = document.querySelector('video');
+	if (document.getElementById('output')){
+	if (document.getElementById('output').querySelector(`img`) == null)
+	{
+		console.log(document.getElementById('send_montage'))
+		document.getElementById('send_montage').style.display="none";
+	}
+	if (document.getElementById('video').style.display !== "none"){
+	const video = document.querySelector('video');
 
-navigator.mediaDevices.getUserMedia(constraints).
-then((stream) => {video.srcObject = stream});
-}}
+	navigator.mediaDevices.getUserMedia(constraints).
+	then((stream) => {video.srcObject = stream});
+	}}
+}
 function getElementsByIdStartsWith(container, selectorTag, prefix) {
 	var items = [];
 	var myPosts = document.getElementById(container).getElementsByTagName(selectorTag);
@@ -153,7 +164,6 @@ function sortMe(a, b) {
 	q = Number(q);
 	var w = b.className.match(/[order-]+\d+/)[0].replace("order-","");
 	w = Number(w);
-	//console.log( q + " : " + w);
 	return q - w;
 }
 
@@ -195,6 +205,7 @@ function capture_image()
 	}
 	if (k > 0)
 	{
+		document.getElementById('send_montage').style.display="block";
 		output = document.getElementById('output');
 		var scale = 1
 		var canvas = document.createElement("canvas");
@@ -250,11 +261,8 @@ function remove_image(id)
 	document.getElementById('list_image').value = new_str;
 	element.parentNode.removeChild(element);
 	id_rm--;
-
-}
-
-if(window.location.pathname.split("/").pop() == "gallerie.php")
-{
+	if(document.getElementById('output').querySelector('img') == null)
+		document.getElementById('send_montage').style.display="none";
 
 }
 

@@ -1,2 +1,9 @@
-Allow From All
-DirectoryIndex ./index.html ./index.php ./error404.php
+DirectoryIndex ./index.php
+# Disable directory browsing 
+Options -Indexes
+IndexIgnore *
+<FilesMatch "./config/*">
+Order allow,deny
+Deny from all
+
+</FilesMatch>

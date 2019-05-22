@@ -84,7 +84,7 @@ try
 							<span >By: <?php echo $value['pseudo']?></span>
 						</div>
 						<div class="col-6 like_count">
-							<span>Like count: <?php echo count($lst_comment[$key])?></span>
+							<span>Likes: <?php echo count(explode(",",$value['like_count'])) - 1?></span>
 						</div>
 						<hr>
 						<div class="col-4 tt">
@@ -122,7 +122,6 @@ try
 					<div class="row lst_com">
 						<div class="col-12 test">
 							<?php
-
 							$e = 0;
 							foreach($lst_comment[$key] as $key_com => $val_com)
 							{?>

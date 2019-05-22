@@ -445,19 +445,21 @@ hr{
 }
 .createur
 {
+	margin: auto;
 	border: 2px solid rgb(32, 29, 34);
 	border-top: none;
 	border-left: none;
-	border-right: none;
 }
 .like_count
 {
+	margin: auto;
 	border: 2px solid rgb(32, 29, 34);
 	border-top: none;
 	border-left: none;
 	border-right: none;
 }
-.like_count span
+
+#footer_div
 {
-	padding: 0;
+	text-align: right;
 }
