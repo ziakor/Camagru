@@ -36,19 +36,19 @@
 		<div class="col-6" id="montage_view" >
 			<div id="choice">
 				<div class="custom-control custom-radio custom-control-inline">
-					<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" onclick="choice('image')" checked = "checked">
+					<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" onclick="choice('image')" >
 					<label class="custom-control-label" for="customRadioInline1">Image</label>
 				</div>
 				<div class="custom-control custom-radio custom-control-inline">
-					<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" onclick="choice('webcam')">
+					<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" onclick="choice('webcam')" checked="checked">
 					<label class="custom-control-label" for="customRadioInline2">Webcam</label>
 				</div>
 			</div>
 			<div class="d-flex flex-column justify-content-center" id="webcam">
-				<div id="image_c">
+				<div id="image_c" style="display:none;">
 				</div>
-				<video autoplay id="video" style="display:none"></video>
-				<input type="file" name="file_back" id="file_back">
+				<video autoplay id="video" style="display:block;"></video>
+				<input type="file" name="file_back" id="file_back"  style="display:none">
 				<button class="btn my-2 my-sm-0 signin disabled" id="capture" onclick="capture_image()">Capture</button>
 			</div>
 		</div>

@@ -28,6 +28,14 @@
 		header("Location: http://" . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['PHP_SELF']), '/\\') . $uri . "/src/header/log.php?valid=" . $_GET['valid'] . "&pseudo=" . $_GET['pseudo']);
 		exit;
 	}
+	if (array_key_exists('error', $_GET))
+	{
+		echo '<div id="error_div">' . $_GET['error'] .'</div>';
+	}
+	else if (array_key_exists('success', $_GET))
+	{
+		echo '<div id="success_div">' . $_GET['success'] .'</div>';
+	}
 	if (array_key_exists('loggued_as', $_SESSION))
 	{
 		include("./src/main/main.php");

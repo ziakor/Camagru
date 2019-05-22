@@ -175,7 +175,6 @@ input {
 {
 	width: 100%    !important;
 	height: auto   !important;
-	display:none;
 	margin: 0 auto;
 
 	border-radius: 3px 3px 0 0;
@@ -462,4 +461,27 @@ hr{
 #footer_div
 {
 	text-align: right;
+}
+
+#error_div
+{
+	display: flex;
+	padding-top: 2.6vh;
+	font-size: 1.1rem;
+	justify-content: center;
+	width: 100vw;
+	height: 10vh;
+	background-color: rgb(99, 3, 3);
+	border: 2px solid rgba(0, 0, 0, 0.24);
+}
+#success_div
+{
+	display: flex;
+	padding-top: 2.6vh;
+	font-size: 1.1rem;
+	justify-content: center;
+	width: 100vw;
+	height: 10vh;
+	background-color: rgb(2, 51, 10);
+	border: 2px solid rgba(0, 0, 0, 0.24);
 }

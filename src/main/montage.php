@@ -14,10 +14,11 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 		$lst_image = explode("|",$lst[$j]);
 		array_pop($lst_image);
 		$image = explode(",", $lst_image[0])[1];
-		//print_r($image = explode(",", $lst[1])[1]);
 		$data = base64_decode($image);
 		$back = imagecreatefromstring($data);
+		imagealphablending($back,true);
 		$back = imagescale($back,$width);
+		imagealphablending($back,true);
 		//TEST
 
 		//active la transparence
@@ -55,8 +56,6 @@ if(array_key_exists("list_image",$_POST) && array_key_exists("position_image",$_
 	//DONT TOUCH
 
 }
-echo $name;
-echo "bite";
 $host  = $_SERVER['HTTP_HOST'];
 $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = 'index.php';

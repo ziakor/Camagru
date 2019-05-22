@@ -66,7 +66,7 @@ try
 		<nav aria-label="pagination_container" class="pagination_container">
 			<ul class="pagination">
 				<li class="page-item"><a class="page-link" href="<?php echo("?page=0")?>">First</a></li>
-				<li class="page-item"><a class="page-link" href="<?php echo("?page=" . $prev)?>">Previous</a></li>
+				<li class="page-item"><a class="page-link" href="<?php echo("?page=" . ($nb - 1))?>">Previous</a></li>
 				<li class="page-item"><a class="page-link" href="<?php echo("?page=" . $nb)?>"><?php echo $nb?></a></li>
 				<li class="page-item"><a class="page-link" href="<?php echo("?page=" . ($nb + 1))?>"><?php echo ($nb + 1)?></a></li>
 				<li class="page-item"><a class="page-link" href="<?php echo("?page=" . ($nb + 2))?>"><?php echo ($nb + 2)?></a></li>
