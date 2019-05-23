@@ -7,7 +7,7 @@ if (document.getElementById('error_div'))
 	setInterval(function () {
 		var element = document.getElementById('error_div');
 		element.parentNode.removeChild(element);
-	}, 4000);
+	}, 355000);
 
 }
 
@@ -16,7 +16,7 @@ if (document.getElementById('success_div'))
 	setInterval(function () {
 		var element = document.getElementById('success_div');
 		element.parentNode.removeChild(element);
-	}, 4000);
+	}, 355000);
 }
 
 //HEADER

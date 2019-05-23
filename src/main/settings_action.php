@@ -47,7 +47,7 @@ try{
                 $_SESSION['loggued_as'] = htmlspecialchars($_POST['new_pseudo']);
             } catch (PDOException $err) {
                 $con->rollBack();
-                $error = "error=true";
+                $error = "?error=Change settings failed";
                 throw new PDOException("error");
             }}
         }
@@ -87,9 +87,13 @@ try{
     }
     }catch(PDOException $err)
     {
-        $error = "?%error=true";
+        $error = "?error=Change settings failed";
     }
+    if ($error !== "")
 	$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/settings.php" . $error;
-	header("Location: http://" . $url);
-	exit();
+else
+	$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/settings.php?success=Capture successfull";
+header("Location: http://" . $url);
+exit();
+
 ?>

@@ -22,14 +22,17 @@ try {
     }
     }catch(PDOException $err)
     {
-        $error = "?error=true";
+        $error = "?error=comment failed";
     }
 } catch (PDOException $err ) {
-    $error = "?error=true";
+    $error = "?error=comment failed";
 }
 
-$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/gallerie.php?error=" . $error;
-header("Location: http://" . $url . $error);
+if ($error !== "")
+	$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/gallerie.php" . $error;
+else
+	$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/gallerie.php?success=Comment added";
+header("Location: http://" . $url);
 exit();
-
+?>
 ?>

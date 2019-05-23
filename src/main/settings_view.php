@@ -4,7 +4,17 @@
         <div class="row">
             <div class="col-12">
                 <form action="./src/main/settings_action.php" class="form-group form_change" method="post">
-                    <h1></h1>
+                    <h1>Settings:</h1>
+                    <?php
+                        	if (array_key_exists('error', $_GET))
+                            {
+                                echo '<div id="error_div">' . $_GET['error'] .'</div>';
+                            }
+                            else if (array_key_exists('success', $_GET))
+                            {
+                                echo '<div id="success_div">' . $_GET['success'] .'</div>';
+                            }
+                        ?>
                     <div class="form_cont">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>

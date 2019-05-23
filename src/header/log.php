@@ -66,12 +66,11 @@ try
 	{
 		if (array_key_exists('InputEmail', $_POST)&& array_key_exists('InputPassword', $_POST) )
 			{
-				CheckForLog($con,$_POST['InputEmail'],$_POST['InputPassword']);
-				$host  = $_SERVER['HTTP_HOST'];
-				$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-				$extra = 'index.php';
-				header("Location: http://$host$uri/../../$extra");
-				exit;
+				if (CheckForLog($con,$_POST['InputEmail'],$_POST['InputPassword']) != 1)
+				{
+					$error = "?error= Connection failed";
+				}
+				
 			}
 	}
 	//Action: inscription
@@ -114,8 +113,12 @@ try
 	}
 }catch(PDOException $err)
 {
-	$error = "?error=true";
+	$error = "?error=ERROR";
 }
-$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/index.php" . $error;
+
+if ($error !== "")
+	$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/index.php" . $error;
+else
+	$url = $_SERVER['HTTP_HOST'] . "/" . explode("/",rtrim(dirname($_SERVER['PHP_SELF']), '/\\'))[1] . "/index.php?success=OK!";
 header("Location: http://" . $url);
-exit;
+exit();

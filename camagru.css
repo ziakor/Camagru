@@ -1,4 +1,10 @@
 
+@font-face
+{
+	font-family: Jost_light;
+	src: url("./ressources/fonts/Jost-400-Book.otf");
+}
+
 .no_pad
 {
 	padding: 0;
@@ -466,22 +472,25 @@ hr{
 #error_div
 {
 	display: flex;
-	padding-top: 2.6vh;
-	font-size: 1.1rem;
+	font-size: 1.5rem;
 	justify-content: center;
-	width: 100vw;
-	height: 10vh;
-	background-color: rgb(99, 3, 3);
+	font-family: Jost_light;
+	height: 6vh;
+	color: white;
+	background-color: red;
 	border: 2px solid rgba(0, 0, 0, 0.24);
 }
 #success_div
 {
 	display: flex;
-	padding-top: 2.6vh;
-	font-size: 1.1rem;
+	font-size: 1.5rem;
 	justify-content: center;
-	width: 100vw;
-	height: 10vh;
-	background-color: rgb(2, 51, 10);
+	font-family: Jost_light;
+	height: 6vh;
+	color: white;
+	background-color: #20bb33;
 	border: 2px solid rgba(0, 0, 0, 0.24);
 }
+
+/*rgb(80, 104, 181)*/
+/*#1580ce*/
