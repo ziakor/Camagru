@@ -27,7 +27,7 @@
                         <div class="form-group">
                             <label for="exampleInputPassword1">Current password</label>
                             <input type="password" class="form-control settings_input" id="current_password" placeholder="Current password"title="salsifi" name="current_passwd" required>
-                            <small id="emailHelp" class="form-text text-muted">remplissez, bande de salopes</small>
+                            <small id="emailHelp" class="form-text text-muted">Fill by your current password!</small>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">New password</label>

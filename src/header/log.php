@@ -99,6 +99,10 @@ try
 					throw(new PDOException("ERROR"));
 				}
 		}
+		else
+		{
+			throw (new PDOException(("ERROR")));
+		}
 	}
 	//action: validation
 	if(array_key_exists('valid', $_GET) && array_key_exists('pseudo', $_GET))
@@ -111,6 +115,7 @@ try
 			$res = $exec->execute([$pseudo, $valid]);
 			}
 	}
+
 }catch(PDOException $err)
 {
 	$error = "?error=ERROR";
