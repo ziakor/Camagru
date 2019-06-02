@@ -3,14 +3,16 @@
 if (document.getElementById("error_div")) {
   setInterval(function() {
     var element = document.getElementById("error_div");
-    element.parentNode.removeChild(element);
+    if (element){
+    element.parentNode.removeChild(element);}
   }, 3000);
 }
 
 if (document.getElementById("success_div")) {
   setInterval(function() {
     var element = document.getElementById("success_div");
-    element.parentNode.removeChild(element);
+    if (element){
+      element.parentNode.removeChild(element);}
   }, 3000);
 }
 
@@ -70,24 +72,19 @@ var t = 0;
 function active_sup(id) {
   parent = document.getElementById(id);
   if (parent.style.backgroundColor == "green") {
-    //parent.style.opacity = '1';
     parent.querySelector("img").className = "item_content img-fluid";
-    //parent.style.backgroundColor = 'rgba(' + ['0','0','0','0.01'].join(',') + ')';
     parent.style.backgroundColor = "black";
   } else {
-    //console.log(parent.querySelector('img'));
     parent.querySelector("img").className =
       "item_content img-fluid" + " order-" + t;
     t++;
     parent.style.backgroundColor = "green";
-    //parent.style.opacity = '0.5';
   }
 }
 
 const constraints = {
   video: true
 };
-//console.log("BUG?")
 
 
 //utilisation d'une image
@@ -99,15 +96,11 @@ if (window.location.pathname.split("/").pop() == "index.php") {
 
       fileInput.addEventListener("change", function(e) {
         var file = fileInput.files[0];
-        console.log(file);
         var a = 1;
         if (file.name.toLowerCase().match(/^.*(.jpg|.jpeg)$/)) {
           var reader = new FileReader();
-          
           fileDisplayArea.style.display = "block";
           reader.onload = function(e) {
-            
-
             var img = new Image();
             img.src = reader.result;
             img.setAttribute("id", "back_image");
@@ -116,7 +109,6 @@ if (window.location.pathname.split("/").pop() == "index.php") {
 
           reader.readAsDataURL(file);
         } else {
-          fileDisplayArea.innerHTML = "File not supported!";
         }
       });
     };
@@ -126,14 +118,11 @@ if (window.location.pathname.split("/").pop() == "index.php") {
 function choice(id) {
   
   if (id == "webcam") {
-    //console.log("coucou")
     document.getElementById("file_back").style.display = "none";
     document.getElementById("image_c").style.display = "none";
     document.getElementById("webcam").querySelector("video").style.display =
       "block";
-    //console.log("< COUCOU")
   } else if (id == "image") {
-    //console.log("PASCOUCOU")
     document.getElementById("image_c").style.display = "block";
     document.getElementById("webcam").querySelector("video").style.display =
       "none";
@@ -197,9 +186,6 @@ var getDataUrl = function(img) {
   canvas.height = img.height;
 
   ctx.drawImage(img, 0, 0);
-
-  // If the image is not png, the format
-  // must be specified here
   return canvas.toDataURL();
 };
 
@@ -214,47 +200,54 @@ function capture_image() {
     }
   }
   if (k > 0) {
-    document.getElementById("send_montage").style.display = "block";
-    output = document.getElementById("output");
-    var scale = 1;
-    var canvas = document.createElement("canvas");
+    if (document.getElementById("back_image") === null && document.getElementById("back_image") && document.getElementById("back_image").src.length < 100
+    || (document.getElementById("back_image") && document.getElementById("back_image").src.length < 100))
+    {
+      window.location.reload(false);
+    }
+    else
+    {
+      if (document.getElementById("output").querySelector("img") == null)
+        document.getElementById("send_montage").style.display = "none";
+      output = document.getElementById("output");
+      var scale = 1;
+      var canvas = document.createElement("canvas");
 
-    if (document.getElementById("video").style.display == "block") {
-      var canvas = convertImageToCanvas(
-        document.getElementById("video"),
-        scale
-      );
-      document.getElementById("list_image").value += canvas.toDataURL() + "|";
-    } else {
-      var canvas = convertImageToCanvas(
-        document.getElementById("back_image"),
-        scale
-      );
-      document.getElementById("list_image").value += canvas.toDataURL() + "|";
-    }
-    var lst = getElementsByIdStartsWith("item", "div", "sup");
-    arraylst = [];
-    let cc = 0;
-    for (let index = 0; index < lst.length; index++) {
-      if (lst[index].style.backgroundColor === "green") {
-        arraylst[cc] = lst[index].querySelector("img");
-        document.getElementById("list_image").value += arraylst[cc].src + "|";
-        cc++;
+      if (document.getElementById("video").style.display == "block") {
+        var canvas = convertImageToCanvas(
+          document.getElementById("video"),
+          scale
+        );
+        document.getElementById("list_image").value += canvas.toDataURL() + "|";
+      } else {
+        var canvas = convertImageToCanvas(document.getElementById("back_image"),scale);
+        document.getElementById("list_image").value += canvas.toDataURL() + "|";
       }
+      var lst = getElementsByIdStartsWith("item", "div", "sup");
+      arraylst = [];
+      let cc = 0;
+      for (let index = 0; index < lst.length; index++) {
+        if (lst[index].style.backgroundColor === "green") {
+          arraylst[cc] = lst[index].querySelector("img");
+          document.getElementById("list_image").value += arraylst[cc].src + "|";
+          cc++;
+        }
+      }
+      arraylst.sort(sortMe);
+      for (let index = 0; index < arraylst.length; index++) {
+        canvas
+          .getContext("2d")
+          .drawImage(arraylst[index], 0, 0, canvas.width, canvas.height);
+      }
+      var img = document.createElement("img");
+      img.src = canvas.toDataURL();
+      img.setAttribute("id", id_rm);
+      img.setAttribute("onclick", "remove_image(" + id_rm + ")");
+      document.getElementById("output").appendChild(img);
+      document.getElementById("list_image").value += "&";
+      id_rm++;
+      document.getElementById("send_montage").style.display = "block";
     }
-    arraylst.sort(sortMe);
-    for (let index = 0; index < arraylst.length; index++) {
-      canvas
-        .getContext("2d")
-        .drawImage(arraylst[index], 0, 0, canvas.width, canvas.height);
-    }
-    var img = document.createElement("img");
-    img.src = canvas.toDataURL();
-    img.setAttribute("id", id_rm);
-    img.setAttribute("onclick", "remove_image(" + id_rm + ")");
-    document.getElementById("output").appendChild(img);
-    document.getElementById("list_image").value += "&";
-    id_rm++;
   }
 }
 
@@ -262,17 +255,11 @@ function remove_image(id) {
   element = document.getElementById(id);
   var str = document.getElementById("list_image").value;
   var field = str.split("&");
-  field.forEach(element => {
-    console.log(element);
-  });
   field.splice(id, 1);
   new_str = field.join("&");
-  console.log(new_str);
   document.getElementById("list_image").value = new_str;
   element.parentNode.removeChild(element);
   id_rm--;
-  if (document.getElementById("output").querySelector("img") == null)
-    document.getElementById("send_montage").style.display = "none";
 }
 
 /*
