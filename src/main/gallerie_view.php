@@ -26,9 +26,9 @@ try {
 	}
 	//remove like
 	else if (array_key_exists('dis', $_GET)) {
-		$sql = "UPDATE image SET like_count= REPLACE(like_count, ?, '')";
+		$sql = "UPDATE image SET like_count= REPLACE(like_count, ?, '') WHERE `image`.`image_name`= ?";
 		$exec = $con->prepare($sql);
-		$exec->execute([("," . $_SESSION['loggued_as'])]);
+		$exec->execute([("," . $_SESSION['loggued_as']), $_GET['dis']]);
 	}
 	//del image
 	else if (array_key_exists('del', $_GET)) {
