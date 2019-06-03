@@ -1,6 +1,7 @@
 <?php
 require_once "./config/database.php";
-
+if (!file_exists("../ressources/db_images"))
+        mkdir("db_images");
 try
 {
 	$con = new PDO($DB_DSN_INIT, $DB_USER, $DB_PASSWORD, $DB_OPTIONS);
