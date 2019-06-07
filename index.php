@@ -2,6 +2,8 @@
 	session_start();
 	$_SESSION['page'] = 0;
 	require_once "./config/setup.php";
+	if (!file_exists("./ressources/db_images"))
+		mkdir("./ressources/db_images");
 ?>
 <!doctype html>
 <html lang="fr">
